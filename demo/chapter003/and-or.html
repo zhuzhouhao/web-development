@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>与、或运算的使用</title>
+</head>
+<body>
+  <script>
+    var user1 = {name: "张三"};
+    user1.age = user1.age || 18;
+    var user2;
+
+    function regiseter(user) {
+      user && (user.registered = true);
+    }
+
+    function print(user) {
+      document.write(user ? Object.values(user): "null", "<br>");
+    }
+
+    regiseter(user1);
+    regiseter(user2);
+    print(user1);
+    print(user2);
+
+  </script>
+</body>
+</html>

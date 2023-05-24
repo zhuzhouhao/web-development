@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-for指令</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(value, key) in info">
+        <h3>{{key}}: {{ value }}</h3>
+      </li>
+    </ul>
+    <button @click="toggleInfo">切换信息</button>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        info : {
+          name: "张三",
+          age: 25,
+          height: 175
+        }
+      },
+      methods: {
+        toggleInfo() {
+          this.info.age = 18;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>字符串模板</title>
+</head>
+<body>
+  <pre>
+    <div id="out"></div>
+  </pre>
+  <script>
+    let name = "Zhang San";
+    let s1 = `hello ${name}. It\`s great to see you.
+    welcome to our website.
+  `;
+    function getCurrentTime(format) {
+      let time = new Date();
+      if(format == 12) {
+        return time.toLocaleTimeString();
+      } else if(format == 24){
+        return time.toLocaleTimeString('chinese', {hour12: false});
+      } else {
+        return time.toString();
+      }
+    }
+    let format = 12;
+    let s2 = `当前时间是：${getCurrentTime(format)}`;
+    document.querySelector("#out").innerHTML = s1 + s2;
+  </script>
+</body>
+</html>

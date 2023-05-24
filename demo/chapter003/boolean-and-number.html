@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>布尔和数值类型</title>
+</head>
+<body>
+  <script>
+    var boo1 = true;
+    var boo2 = false;
+    document.write("boo1=" + boo1 + ", boo2=" + boo2 + "<br/>");
+
+    var num1 = 3;
+    var num2 = 3.0;
+    var num3 = NaN;
+    document.write("num1=" + num1 + ", num2=" + num2 + ", num3=" + num3 + "<br/>");
+
+    var num4 = -Infinity;
+    var num5 = +Infinity;
+    document.write((-Infinity < 0) + ", " + (+Infinity > 0) + ", " + (+Infinity > num2) + "<br/>");
+
+    document.write((0.1 + 0.2 != 0.3) + ", " + (9999999999999999 == 10000000000000001));
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数的使用</title>
+</head>
+<body>
+  <script>
+    document.write(calc(1, 2, add), "<br>");
+    document.write(calc(1, 2, minus), "<br>");
+
+    function calc(a, b, fn) {
+      return fn(a, b);
+    }
+
+    function add(a, b) {
+      return a + b;
+    }
+
+    var minus = function(a, b) {
+      return a - b;
+    }
+
+    document.write(calc(1, 2, minus), "<br>");
+  </script>
+</body>
+</html>

@@ -1,0 +1,1343 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>temp</title>
+
+    <link rel="stylesheet" href="css/include.css" media="all">
+
+    <!-- pre-libraries -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+
+    <script src="js/define.js"></script>
+  </head>
+  <body>
+    <div class="reveal pattern--random">
+      <div class="slides">
+
+        <script>
+          courseName = "Web应用开发";
+          chapterName = "第五章 Vue基础";
+          toc = [
+            {name: "Vue概述", desc: ""},
+            {name: "安装Vue", desc: ""},
+            {name: "MVVM", desc: ""},
+            {name: "第一个Vue实例", desc: ""},
+            {name: "Vue生命周期", desc: ""},
+            {name: "指令、参数、修饰符", desc: ""},
+            {name: "条件渲染", desc: ""},
+            {name: "列表渲染", desc: ""},
+            {name: "过滤", desc: ""},
+            {name: "class与style绑定", desc: ""},
+          ];
+        </script>
+
+        <section class="cover" id="cover"></section>
+
+        <section class="toc color--midnight" id="toc"></section>
+
+        <section class="subsection color--radiant"></section>
+
+        <section id="why-vue">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">为什么需要Vue</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">既然使用HTML+CSS+JavaScript已经可以开发Web前端了，为什么还需要Vue呢？</p>
+              <p class="fragment">一切的编程语言都立足于电信号的通断，即01。所有指令都可以使用0和1表示，可我们为什么软件都不采用二进制编码来进行开发呢？</p>
+              <p class="fragment">这里面牵扯到一个成本的问题，这正是影响项目领导者进行决策的关键因素。Vue项目与原生JS或jQuery等仿原生框架项目相比，开发成本要低一些。</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- why-vue -->
+
+        <section id="vue-basics">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">Vue概述</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">Vue (读音 /vjuː/，类似于 view)，不要读错。</p>
+              <p class="fragment">vue 是一套构建用户界面的渐进式框架。</p>
+              <p class="fragment">官网地址：https://cn.vuejs.org/</p>
+              <p class="fragment">与其他重量级框架不同的是，Vue 采用自底向上增量开发的设计。</p>
+              <p class="fragment">Vue 的核心库只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合。</p>
+              <p class="fragment">另一方面，当与单文件组件和 Vue 生态系统支持的库结合使用时，Vue 也完全能够为复杂的单页应用程序提供驱动。</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- vue-basics -->
+
+        <section id="compatibility">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">兼容性</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">Vue.js 不支持 IE8 及其以下版本，因为 Vue.js 使用了 IE8 不能模拟的 ECMAScript 5 特性。</p>
+              <p class="fragment">Vue.js 支持所有兼容 ECMAScript 5 的浏览器。</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- compatibility -->
+
+        <section id="advantages">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">优势</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">主要开发者是中国人，中文社区成熟。</p>
+              <p class="fragment">官方文档非常全。</p>
+              <p class="fragment">用户基数大。</p>
+              <p class="fragment">项目不用从头开始使用Vue。</p>
+              <p class="fragment">组件化应用构建</p>
+              <p class="fragment">
+                和Vue同类的框架还有：
+              </p>
+              <ul>
+                <li class="fragment">React</li>
+                <li class="fragment">Angular</li>
+              </ul>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- advantages -->
+
+        <section class="subsection color--radiant"></section>
+
+        <section id="install">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">安装</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                4种安装方式：
+              </p>
+              <ul>
+                <li class="fragment">下载并直接页面中引入</li>
+                <li class="fragment">CDN引入</li>
+                <li class="fragment">包管理工具</li>
+                <li class="fragment">脚手架安装</li>
+              </ul>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- install -->
+
+        <section id="direct-use">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">直接引入</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">按照https://cn.vuejs.org/v2/guide/installation.html的说明下载，并在html文件中直接引入即可。</p>
+              <p class="fragment">或者直接从CDN引入：</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+                </script>
+              </code></pre>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- direct-use -->
+
+        <section id="package-manager">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">包管理工具</h1>
+            </div>
+            <div class="content">
+              <pre class="fragment"><code class="lang-sh" data-line-numbers="">
+                <script type="text/template">
+$ npm i -S vue
+$ yarn add vue
+                </script>
+              </code></pre>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- package-manager -->
+
+        <section id="vue-cli">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">脚手架安装</h1>
+            </div>
+            <div class="content">
+<p class="fragment">vue-cli 提供一个官方命令行工具，可用于快速搭建大型单页应用。</p>
+<p class="fragment">该工具提供开箱即用的构建工具配置，带来现代化的前端开发流程。</p>
+<p class="fragment">只需几分钟即可创建并启动一个带热重载、保存时静态检查以及可用于生产环境的构建配置的项目。</p>
+<p class="fragment">该工具3.0版本之前和之后的安装方式有所不同：</p>
+              <p class="fragment">
+                vue-cli 3.x 之前
+              </p>
+              <pre class="fragment"><code class="lang-sh" data-line-numbers="">
+                <script type="text/template">
+# 1. install vue-cli
+$ npm install -g vue-cli  
+# 2. where install project
+$ cd desktop
+# 3. create project
+$ vue init webpack project_name
+# 4. enter project
+$ cd project_name
+# 5. run project
+$ npm run dev
+                </script>
+              </code></pre>
+                <p class="fragment">
+                  vue-cli 3.x 之后
+                </p>
+<p class="fragment">
+</p>
+<pre class="fragment"><code class="lang-sh" data-line-numbers="">
+  <script type="text/template">
+# 全局安装（3.x 以后vue-cli被重新命名为@vue/cli）：
+$ npm i -g @vue/cli 
+# 查看版本：
+$ vue --version
+@vue/cli 4.1.2
+# 创建项目：
+$ vue create <project_name>
+  </script>
+</code></pre>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- vue-cli -->
+
+        <section class="subsection color--radiant"></section>
+
+        <section id="mvc">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">MVC</h1>
+            </div>
+            <div class="content">
+              <div class="r-stack fragment">
+                <img class="animated slideInLeft" src="img/chapter005/mvc.png" height="400">
+              </div>
+              <p class="fragment">M（Mode）数据层</p>
+              <p class="fragment">V（View）视图层</p>
+              <p class="fragment">C（Controller）控制层</p>
+              <p class="fragment">M -&gt; 发送通知 -&gt; 控制层 -&gt; 刷新视图</p>
+              <p class="fragment">V -&gt; 发送通知 -&gt; 控制层 -&gt; 刷新数据</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- mvc -->
+
+        <section id="mvvm">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">MVVM</h1>
+            </div>
+            <div class="content">
+              <div class="r-stack">
+                <div>
+                  <p class="fragment">
+                    MVVM（ Model-View-ViewModel ） 为一种设计模式。
+                  </p>
+                  <p class="fragment">V(View)视图层，在我们前端开发中，通常就是DOM层。主要的作用是给用户展示各种信息。</p>
+                  <p class="fragment">M(Model)模型层，主要是各种数据（变量），数据可能是我们固定的死数据，更多的是来自我们服务器，从网络上请求下来的数据。</p>
+                  <p class="fragment">VM(ViewModel)视图模型层，视图模型层是View和Model沟通的桥梁。</p>
+                </div>
+                <div class="r-stack fragment">
+                  <img class="animated slideInLeft" src="img/chapter005/mvvm.png" height="400">
+                </div>
+              </div>
+              <p class="fragment">
+                在Vue中，ViewModel 是 Vue.js 的核心：
+              </p>
+<ul>
+  <li class="fragment">一方面它实现了Data Binding，也就是数据绑定，将Model的改变实时的反应到View中</li>
+  <li class="fragment">另一方面它实现了DOM Listener，也就是DOM监听，当DOM发生一些事件(点击、滚动、touch等)时，可以监听到，并在需要的情况下改变对应的Data。</li>
+</ul>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- mvvm -->
+
+        <section class="subsection color--radiant"></section>
+
+        <section id="data-binding">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">数据绑定</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">在传统JS开发中，如果我们需要观测某个表单元素值的变化，必须自己手动写监听事件。</p>
+              <p class="fragment">如果某个变量的值改变后，我们想要在页面中体现出这种变化，必须写DOM操作改变页面中元素的文本。</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- data-binding -->
+
+        <section id="traditional-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：原生方式开发</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/hello-traditional.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <form class="tab-container full-height">
+                <input type="radio" name="tab" class="tab-1" checked><span>HTML</span>
+                <input type="radio" name="tab" class="tab-2"><span>JS</span>
+                <div class="tab-content-1">
+                  <pre><code class="lang-html" style="max-height: 700px;" data-code="demo/chapter005/hello-traditional.html" data-line-numbers="">
+                  </code></pre>
+                </div>
+                <div class="tab-content-2">
+                  <pre><code class="lang-js" style="max-height: 700px;" data-code="demo/chapter005/js/traditional.js" data-line-numbers="">
+                  </code></pre>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section> <!-- traditional-demo -->
+
+        <section id="first-vue-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/hello.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <form class="tab-container full-height">
+                <input type="radio" name="tab" class="tab-1" checked><span>HTML</span>
+                <input type="radio" name="tab" class="tab-2"><span>JS</span>
+                <div class="tab-content-1">
+                  <pre><code class="lang-html" style="max-height: 700px;" data-code="demo/chapter005/hello.html" data-line-numbers="">
+                  </code></pre>
+                </div>
+                <div class="tab-content-2">
+                  <pre><code class="lang-js" style="max-height: 700px;" data-code="demo/chapter005/js/hello.js" data-line-numbers="">
+                  </code></pre>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section> <!-- first-vue-demo -->
+
+        <section id="vue-reason">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">Vue基本原理</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">创建vue实例的时候我们设置了vue对象的一些属性：</p>
+              <ul>
+                <li class="fragment">el: 定之后Vue实例会管理哪一个DOM。</li>
+                <li class="fragment">data: ue实例对应的数据对象。</li>
+              </ul>
+              <p class="fragment">当一个 Vue 实例被创建时，它将 data 对象中的所有的属性加入到 Vue 的响应式系统中。</p>
+              <p class="fragment">当这些属性的值发生改变时，视图将会产生“响应”，即匹配更新为新的值。</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- vue-reason -->
+
+        <section class="subsection color--radiant"></section>
+
+        <section id="life-cycle-concept">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">生命周期的概念</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">每个 Vue 实例在被创建之前都要经过一系列的初始化过程。</p>
+              <p class="fragment">例如需要设置数据监听、编译模板、挂载实例到 DOM、在数据变化时更新 DOM 等。</p>
+              <p class="fragment">同时在这个过程中也会运行一些叫做生命周期钩子的函数，给予用户机会在一些特定的场景下添加他们自己的代码。</p>
+              <p class="fragment">也有一些其它的钩子，在实例生命周期的不同场景下调用，如 mounted、updated、destroyed。</p>
+              <p class="fragment">钩子的 this 指向调用它的 Vue 实例。</p>
+              <pre class="fragment"><code class="lang-js" data-line-numbers="">
+                <script type="text/template">
+new Vue({
+    el: "#app",
+    data: {
+        name: "Henrry Lee"
+    },
+    created() {
+        // this 指向 vue 实例
+        console.log(`Hello, ${this.name}!`);
+    }
+});
+                </script>
+              </code></pre>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- life-cycle-concept -->
+
+        <section id="life-cycle-hooks">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">生命周期钩子函数</h1>
+            </div>
+            <div class="content">
+              <ul>
+                <li class="fragment">beforeCreate： 在实例初始化之后，数据观测(data observer) 和 event/watcher 事件配置之前被调用。</li>
+                <li class="fragment">created：实例已经创建完成之后被调用。在这一步，实例已完成以下的配置：数据观测(data observer)，属性和方法的运算， watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见。 可以在组件的这个期间 请求数据，如果是keep-alive组件会被缓存起来，生命周期不会再次触发，如果需要更新数据可以watch当前router变化，如果router是当前组件所在的router则请求数据。</li>
+                <li class="fragment">beforeMount：在挂载开始之前被调用：相关的 render 函数首次被调用。</li>
+                <li class="fragment">mounted：vm.$el 已挂载在文档内，对已有dom节点的操作可以在这期间进行。</li>
+                <li class="fragment">beforeUpdate：数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前。可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。</li>
+                <li class="fragment">updated：由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态，因为这可能会导致更新无限循环。</li>
+                <li class="fragment">activated：keep-alive 组件激活时调用。</li>
+                <li class="fragment">deactivated：keep-alive 组件停用时调用。</li>
+                <li class="fragment">beforeDestroy：实例销毁之前调用。在这一步，实例仍然完全可用。</li>
+                <li class="fragment">destroyed：Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。</li>
+              </ul>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- life-cycle-hooks -->
+
+        <section class="subsection color--radiant"></section>
+
+        <section id="directive">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">指令和参数</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                指令主要用于控制HTML元素的渲染，是带有 v- 前缀的特殊HTML属性。
+              </p>
+              <p class="fragment">
+                常用的属性有：
+              </p>
+<ul>
+  <li class="fragment">v-text指令用于向元素中插入文本节点</li>
+  <li class="fragment">v-html 指令用于输出HTML代码</li>
+  <li class="fragment">v-bind 指令用于给HTML元素设置属性，可以缩写为:</li>
+  <li class="fragment">v-model 指令来实现双向数据绑定</li>
+  <li class="fragment">v-on 指令可以绑定事件监听器，通过该监听器可以vue实例中定义的方法，可以缩写为@</li>
+  <li class="fragment">v-once指令表示元素和组件(组件后面才会学习)只渲染一次，不会随着数据的改变而改变。</li>
+</ul>
+<p class="fragment">
+  参数是在指令后以冒号指定的内容，不同的指令参数的意义略有不同。
+</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- directive -->
+
+        <section id="v-text-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-text绑定文字</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-text.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-text.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-text-demo -->
+
+        <section id="v-html-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-html输出HTML代码</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-html.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-html.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-html-demo -->
+
+        <section id="v-bind-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-bind绑定属性</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-bind.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-bind.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-bind-demo -->
+
+        <section id="v-model-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-model实现双向数据绑定</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-model.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-model.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-model-demo -->
+
+        <section id="v-on-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-on实现事件绑定到方法</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-on.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-on.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-on-demo -->
+
+        <section id="v-once-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-once来固定初始值</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-once.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-once.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-once-demo -->
+
+        <section id="modifier" data-fragment-order>
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">修饰符</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">修饰符是以.指明的指令的特殊后缀，用于指出特殊何种方式绑定。</p>
+              <p class="fragment">常见的修饰符有：</p>
+<ul>
+  <li class="fragment">lazy修饰符：
+    <ul class="fragment fade-out collapse full-size" data-fragment-after="group1-last">
+      <li class="fragment">默认情况下，v-model默认是在input事件中同步输入框的数据的。</li>
+      <li class="fragment">也就是说，一旦有数据发生改变对应的data中的数据就会自动发生改变。</li>
+      <li class="fragment">lazy修饰符可以让数据在失去焦点或者回车时才会更新：</li>
+      <pre class="fragment" data-fragment-id="group1-last"><code class="lang-html" data-line-numbers="">
+        <script type="text/template">
+          <input type="text" v-model.lazy="message">
+        </script>
+      </code></pre>
+    </ul>
+  </li>
+  <li class="fragment">number修饰符：
+    <ul class="fragment fade-out collapse full-size" data-fragment-after="group2-last">
+      <li class="fragment">默认情况下，在输入框中无论我们输入的是字母还是数字，都会被当做字符串类型进行处理。</li>
+      <li class="fragment">但是如果我们希望处理的是数字类型，那么最好直接将内容当做数字处理。</li>
+      <li class="fragment">number修饰符可以让在输入框中输入的内容自动转成数字类型：</li>
+      <pre class="fragment" data-fragment-id="group2-last"><code class="lang-html" data-line-numbers="">
+        <script type="text/template">
+          <input type="text" v-model.number="age">
+        </script>
+      </code></pre>
+    </ul>
+  </li>
+  <li class="fragment">trim修饰符：
+    <ul>
+      <li class="fragment">如果输入的内容首尾有很多空格，通常我们希望将其去除</li>
+      <li class="fragment">trim修饰符可以过滤内容左右两边的空格</li>
+      <pre class="fragment"><code class="lang-html" data-line-numbers="">
+        <script type="text/template">
+          <input type="text" v-model.trim="username">
+        </script>
+      </code></pre>
+    </ul>
+  </li>
+</ul>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- modifier -->
+
+        <section class="subsection color--radiant"></section>
+
+        <section id="v-if">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">v-if条件渲染</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">v-if 是条件渲染指令，它根据表达式的真假来删除和插入元素，它的基本语法如下：</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+                  <elem v-if="expression"></elem>
+                </script>
+              </code></pre>
+              <p class="fragment">expression 是一个返回bool值的表达式，表达式可以是一个bool属性，也可以是一个返回bool的运算式。</p>
+              <p class="fragment">v-if指令是根据条件表达式的值来执行元素的插入或者删除行为。</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- v-if -->
+
+        <section id="v-if-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-if进行条件渲染</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-if.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-if.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-if-demo -->
+
+        <section id="v-if-template">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">结合template来进行条件渲染</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">因为 v-if 是一个指令，所以必须将它添加到一个元素上。</p>
+              <p class="fragment">但是如果想同时进行多个元素的条件渲染呢？</p>
+              <p class="fragment">虽然可以对多个元素同时使用v-if，但未免太麻烦。</p>
+              <p class="fragment">此时可以把一个 &lt;template&gt; 元素当做不可见的包裹元素，并在上面使用 v-if。</p>
+              <p class="fragment">最终的渲染结果将不包含 &lt;template&gt; 元素。</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- v-if-template -->
+
+        <section id="v-if-template-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-if和template结合使用</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-if-template.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-if-template.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-if-template-demo -->
+
+        <section id="v-else">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">v-else指令</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">v-else 指令可以为 v-if 添加一个 else 模块。</p>
+              <p class="fragment">当v-if条件不成立时才渲染此元素。</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- v-else -->
+
+        <section id="v-else-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-else指令进行条件渲染</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-else.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-else.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-else-demo -->
+
+        <section id="v-else-if">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">v-else指令</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">v-else-if 指令可以为 v-if 添加一个 else if模块。</p>
+              <p class="fragment">当v-if条件不成立时，且后面条件也满足时才渲染此元素。</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- v-else-if -->
+
+        <section id="v-else-if-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-else-if条件渲染</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-else-if.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-else-if.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-else-if-demo -->
+
+        <section id="v-show">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">v-show指令</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">v-show的用法和v-if非常相似，也用于决定一个元素是否渲染</p>
+              <p class="fragment">不同的是带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS 属性 display。</p>
+              <p class="fragment">注意：v-show 不支持 &lt;template&gt; 元素，也不支持 v-else。</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- v-show -->
+
+        <section id="v-show-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-shown渲染</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-show.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-show.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-show-demo -->
+
+        <section id="v-show-v-if">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">v-show和v-if比较</h1>
+            </div>
+            <div class="content">
+              <table>
+<thead>
+<tr>
+<th>#</th>
+<th>v-if</th>
+<th>v-show</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>渲染</td>
+<td>条件成立，才会渲染元素</td>
+<td>不管条件是否成立，都会渲染元素</td>
+</tr>
+<tr>
+<td>切换开销</td>
+<td>重新渲染元素，开销更大</td>
+<td>控制display属性，开销更小</td>
+</tr>
+<tr>
+<td>使用场景</td>
+<td>不频繁切换</td>
+<td>频繁切换</td>
+</tr>
+</tbody>
+</table>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- v-show-v-if -->
+
+        <section id="v-if-problem-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：切换元素时的问题</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-if-problem.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-if-problem.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-if-problem-demo -->
+
+        <section id="v-if-problem-reason">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">问题产生的原因</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">这是因为Vue在进行DOM渲染时，出于性能考虑，会尽可能的复用已经存在的元素，而不是重新创建新的元素。</p>
+              <p class="fragment">在上面的案例中，Vue内部会发现原来的input元素不再使用，直接作为else中的input来使用了。</p>
+              <p class="fragment">
+                解决方案：
+              </p>
+              <ul>
+                <li class="fragment">如果我们不希望Vue出现类似重复利用的问题，可以给对应的input添加key</li>
+                <li class="fragment">并且我们需要保证key的不同</li>
+              </ul>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- v-if-problem-reason -->
+
+        <section id="v-if-solution-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：解决问题</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-if-solution.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-if-solution.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-if-solution-demo -->
+
+        <section class="subsection color--radiant"></section>
+
+        <section id="v-for-array">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">v-for迭代数组</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                当我们有一组数据需要进行渲染时，我们就可以使用v-for来完成。
+              </p>
+              <ul>
+                <li class="fragment">v-for的语法类似于JavaScript中的for循环。</li>
+                <li class="fragment">格式如下：item in items的形式。</li>
+              </ul>
+              <p class="fragment">
+                如果在遍历的过程中，我们需要拿到元素在数组中的索引值呢？
+              </p>
+              <ul>
+                <li class="fragment">语法格式：v-for=(item, index) in items</li>
+                <li class="fragment">其中的index就代表了取出的item在原数组的索引值。</li>
+              </ul>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- v-for-array -->
+
+        <section id="v-for-array-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-for进行数组迭代</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-for-array.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-for-array.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-for-array-demo -->
+
+        <section id="v-for-object">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">v-for迭代对象</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                v-for可以用户遍历对象
+              </p>
+              <ul>
+                <li class="fragment">实际上是遍历了对象的所有属性</li>
+                <li class="fragment">格式如下：(value, key, [index]) in items的形式</li>
+              </ul>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- v-for-object -->
+
+        <section id="v-for-object-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用v-for遍历对象</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-for-object.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-for-object.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-for-object-demo -->
+
+        <section id="v-for-notice">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">注意事项</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                Vue 不能检测以下变动的数组：
+              </p>
+              <ul>
+                <li class="fragment">通过下标修改数据时</li>
+                <li class="fragment">修改数组的长度时</li>
+              </ul>
+              <p class="fragment">
+                Vue 不能检测对象属性的添加或删除
+              </p>
+              <p class="fragment">
+                对于已经创建的实例，Vue 不能动态添加根级别的响应式属性。但是，可以向嵌套对象添加响应式属性。
+              </p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- v-for-notice -->
+
+        <section class="subsection color--radiant"></section>
+
+        <section id="v-for-filter">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">列表渲染过滤</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">有时候，我们不一定想显示列表中所有的元素，而只想显示一部分满足条件的元素，但又不想破坏原始数组的内容。</p>
+              <p class="fragment">你可以使用一个 method 方法对数据进行过滤</p>
+              <p class="fragment">此外也可以创建返回过滤或排序数组的<b>计算属性</b>。</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- v-for-filter -->
+
+        <section id="v-for-filter-method-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：通过method过滤列表</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-for-filter-method.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-for-filter-method.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-for-filter-method-demo -->
+
+        <section id="v-for-filter-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：为列表渲染添加过滤</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/v-for-filter.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/v-for-filter.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- v-for-filter-demo -->
+
+        <section id="filter">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">过滤器</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                Vue.js 允许你自定义过滤器，可被用于一些常见的文本格式化。过滤器可以用在两个地方：双花括号插值和 v-bind 表达式 (后者从 2.1.0+ 开始支持)。过滤器应该被添加在 JavaScript 表达式的尾部，由“管道”符号（|）指示：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+<!-- 在双花括号中 -->
+{{ money | addSymbols }}
+
+<!-- 在 'v-bind' 中 -->
+<div :id="id | formatId"></div>
+                </script>
+              </code></pre>
+              <p class="fragment">
+                上面代码中addSymbols就是一个过滤器，需要在Vue的filters属性中定义，过滤器的本质是一个函数：
+              </p>
+              <pre class="fragment"><code class="lang-js" data-line-numbers="">
+                <script type="text/template">
+filters: {
+  addSymbols(value) {
+    return "原价：¥ " + value;
+  }
+}
+                </script>
+              </code></pre>
+              <p class="fragment">
+                或者在创建 Vue 实例之前全局定义过滤器，全局过滤器可以在多个页面重用：
+              </p>
+              <pre class="fragment"><code class="lang-js" data-line-numbers="">
+                <script type="text/template">
+Vue.filter('addSymbols', (value) => {
+  return "原价：¥ " + value;
+})
+
+let app = new Vue({……})
+                </script>
+              </code></pre>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- filter -->
+
+        <section id="filter-demo">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">代码：使用过滤器</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter005/filter.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 680px;"  data-code="demo/chapter005/filter.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- filter-demo -->
+
+        <section class="subsection color--radiant"></section>
+        
+        <section id="class-style-bind">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">Style和Class绑定的处理</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">操作元素的 class 列表和内联样式是数据绑定的一个常见需求。</p>
+              <p class="fragment">因为它们都是属性，所以我们可以用 v-bind 处理它们：只需要通过表达式计算出字符串结果即可。</p>
+              <p class="fragment">不过，字符串拼接麻烦且易错。</p>
+              <p class="fragment">在将 v-bind 用于 class 和 style 时，Vue.js 做了专门的增强。</p>
+              <p class="fragment">表达式结果的类型除了字符串之外，还可以是对象或数组。</p>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- class-style-bind -->
+
+        <section id="class-object1">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">对象语法1绑定class</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                我们可以为 v-bind:class 设置一个对象，从而动态的切换 class。
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+<div id="app">
+<div :class="{'active': isActive, 'error':hasError}"></div>
+</div>
+                </script>
+              </code></pre>
+              <pre class="fragment"><code class="lang-js" data-line-numbers="">
+                <script type="text/template">
+let app = new Vue({
+  el: '#app',
+  data: {
+    isActive: false,
+    hasError: true
+  },
+})
+                </script>
+              </code></pre>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- class-object -->
+
+        <section id="object-class2">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">对象语法2绑定class</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                我们也可以直接绑定数据里的一个对象
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+<div id="app">
+    <div :class="classObj"></div>
+</div>
+                </script>
+              </code></pre>
+              <pre class="fragment"><code class="lang-js" data-line-numbers="">
+                <script type="text/template">
+let app = new Vue({
+  el: '#app',
+  data: {
+    classObj: {
+      "active":true,
+      "box":true
+    }
+  }
+})
+                </script>
+              </code></pre>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- object-class2 -->
+
+        <section id="array-class">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">数组样式绑定class</h1>
+            </div>
+            <div class="content">
+              我们可以把一个数组传递给 v-bind:class
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+<div id="app">
+  <div :class="[class1, class2]"></div>
+</div>
+                </script>
+              </code></pre>
+              <pre class="fragment"><code class="lang-js" data-line-numbers="">
+                <script type="text/template">
+let app = new Vue({
+  el: '#app',
+  data: {
+    class1:"active",
+    class2:"box"
+  }
+})
+                </script>
+              </code></pre>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- array-class -->
+
+        <section id="object-style1">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">使用对象语法1绑定style</h1>
+            </div>
+            <div class="content">
+              通过 v-bind:style 指令可直接设置样式。
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+<div id="app">
+  <h1 :style="{color, fontSize}">Hello, World!</h1>
+</div>
+                </script>
+              </code></pre>
+              <pre class="fragment"><code class="lang-js" data-line-numbers="">
+                <script type="text/template">
+let app = new Vue({
+  el: '#app',
+  data: {
+    color:"red",
+    fontSize: "36px"
+  }
+})
+                </script>
+              </code></pre>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- object-style1 -->
+
+        <section id="object-style2">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">使用对象语法2绑定style</h1>
+            </div>
+            <div class="content">
+              也可以直接设置一个样式对象
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+<div id="app">
+    <h1 :style="styleObj">Hello, World!</h1>
+</div>
+                </script>
+              </code></pre>
+              <pre class="fragment"><code class="lang-js" data-line-numbers="">
+                <script type="text/template">
+let app = new Vue({
+    el: '#app',
+    data: {
+        styleObj: {
+            color: "red",
+            fontSize: "36px"
+        }
+    }
+})
+                </script>
+              </code></pre>
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- object-style2 -->
+
+        <section id="array-style">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">数组语法绑定style</h1>
+            </div>
+            <div class="content">
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+<div id="app">
+    <h1 :style="[style1, style2]">Hello, World!</h1>
+</div>
+                </script>
+              </code></pre>
+              <pre class="fragment"><code class="lang-js" data-line-numbers="">
+                <script type="text/template">
+let app = new Vue({
+  el: '#app',
+  data: {
+    style1: {
+      color: "blue",
+      fontSize: "36px"
+    },
+    style2: {
+      textDecoration: "underline"
+    }
+  }
+})
+                </script>
+              </code></pre>
+
+            </div> <!-- content -->
+          </div> <!-- wrapper -->
+        </section> <!-- array-style -->
+
+        <section id="thank-you-slide" class="end color--radiant"></section>
+
+      </div> <!-- slides -->
+    </div> <!-- reveal -->
+
+    <script>
+      language = 'cn';
+
+      var myConfig = {
+        "math": math, 
+        "asciinema": {
+          rows: 24,
+          cols: 81
+        }
+      };
+
+      defineMyPlugins = function() {
+        myPreloadPlugins = [
+          /**** my plugins ****/
+          RevealLoadCode, RevealFragmentOrder,
+        ];
+        myPlugins = [
+          /**** built-in plugins ****/
+          /**** third-party plugins ****/
+          /**** my plugins ****/
+          RevealCodeTips, RevealFragmentGroup, RevealAceEditor,
+        ];
+      }
+    </script>
+    <script src="js/common.js"></script>
+
+  </body>
+</html>

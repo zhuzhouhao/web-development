@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>变量的提前申明</title>
+</head>
+<body>
+  <script>
+    function  fn(){
+         document.write(a); //undefined
+         var a=100;
+         document.write(a); //100
+    };
+    fn();
+    document.write(a);//   报错未定义！
+  </script>
+</body>
+</html>

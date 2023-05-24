@@ -1,0 +1,124 @@
+/*
+
+Brown Paper style from goldblog.com.ua (c) Zaripov Yura <yur4ik7@ukr.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background:#b7a68e url(./img/highlight/brown-papersq.png);
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal {
+  color:#005599;
+  font-weight:bold;
+}
+
+.hljs,
+.hljs-subst {
+  color: #363c69;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-type,
+.hljs-attribute,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-built_in,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-link,
+.hljs-name {
+  color: #2c009f;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-meta,
+.hljs-deletion {
+  color: #802022;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-doctag,
+.hljs-title,
+.hljs-section,
+.hljs-type,
+.hljs-name,
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.reveal .hljs.has-highlights tr:not(.highlight-line) {
+    opacity: .8;
+}
+
+/* RainSia:: code highlight focus */
+.highlight-line { background: #fdf6e3; color: #657b83; }
+
+.highlight-line:first-child {
+  border-top: 2px solid red; 
+}
+
+.highlight-line:last-child {
+  border-bottom: 2px solid red; 
+}
+
+.highlight-line .hljs-comment, 
+.highlight-line .hljs-quote { color: #93a1a1; }
+
+.highlight-line .hljs-keyword, 
+.highlight-line .hljs-selector-tag, 
+.highlight-line .hljs-addition { color: #859900; }
+
+.highlight-line .hljs-number, 
+.highlight-line .hljs-string, 
+.highlight-line .hljs-meta .hljs-meta-string, 
+.highlight-line .hljs-literal, 
+.highlight-line .hljs-doctag, 
+.highlight-line .hljs-regexp { color: #2aa198; }
+
+.highlight-line .hljs-title, 
+.highlight-line .hljs-section, 
+.highlight-line .hljs-name, 
+.highlight-line .hljs-selector-id, 
+.highlight-line .hljs-selector-class { color: #268bd2; }
+
+.highlight-line .hljs-attribute, 
+.highlight-line .hljs-attr, 
+.highlight-line .hljs-variable, 
+.highlight-line .hljs-template-variable, 
+.highlight-line .hljs-class .hljs-title, 
+.highlight-line .hljs-type { color: #b58900; }
+
+.highlight-line .hljs-symbol, 
+.highlight-line .hljs-bullet, 
+.highlight-line .hljs-subst, 
+.highlight-line .hljs-meta, 
+.highlight-line .hljs-meta .hljs-keyword, 
+.highlight-line .hljs-selector-attr, 
+.highlight-line .hljs-selector-pseudo, 
+.highlight-line .hljs-link { color: #cb4b16; }
+
+.highlight-line .hljs-built_in, 
+.highlight-line .hljs-deletion { color: #dc322f; }
+
+.highlight-line .hljs-formula { background: #eee8d5; }
+
+.highlight-line .hljs-emphasis { font-style: italic; }
+
+.highlight-line .hljs-strong { font-weight: bold; }

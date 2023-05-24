@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Async Await Resolve</title>
+</head>
+<body>
+  <div id="test-promise-log"></div>
+  <script>
+    let logging = document.getElementById('test-promise-log');
+
+    // 输出log到页面:
+    function log(s) {
+      let p = document.createElement('p');
+      p.innerHTML = s;
+      logging.appendChild(p);
+    }
+
+    function say() {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          log("假装我是一个异步程序");
+          let age = 23;
+          if(age > 25) {
+            reject(`发生了异常。今年我 ${age} 岁`);
+          } else {
+            resolve(`今年我 ${age} 岁`);
+          }
+        }, 1000);
+      });
+    }
+
+    async function demo() {
+      try {
+        const v = await say();
+        log(v);
+      } catch (e) {
+        log(e)
+      }
+    }
+    demo();
+  </script>
+</body>
+</html>

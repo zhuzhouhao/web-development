@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-for指令</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="food in foods">
+        <h3>{{ food }}</h3>
+      </li>
+    </ul>
+    <button @click="toggleFood">切换主食</button>
+    <ol>
+      <li v-for="(fruit, index) in fruits" :key="index">
+        <h3>{{ fruit.name }}</h3>
+      </li>
+    </ol>
+    <button @click="toggleFruit">切换水果</button>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        foods : [
+          "面包",
+          "蛋糕",
+          "米饭"
+        ],
+        fruits : [
+          {name: "苹果"},
+          {name: "香蕉"},
+          {name: "樱桃"}
+        ]
+      },
+      methods: {
+        toggleFood() {
+          this.foods = [
+            "bread",
+            "cake",
+            "rice"
+          ];
+        },
+        toggleFruit() {
+          this.fruits = [
+            {name: "apple"},
+            {name: "banana"},
+            {name: "cherry"}
+          ];
+        }
+      }
+    });
+  </script>
+</body>
+</html>

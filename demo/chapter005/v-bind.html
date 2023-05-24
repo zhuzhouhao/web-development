@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-bind指令</title>
+</head>
+<body>
+  <div id="app">
+    <div v-bind:id="div_id"></div>
+    <a :href="url" v-text="site"></a>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        div_id: "content",
+        url: "https://www.baidu.com",
+        site: "百度"
+      }
+    });
+  </script>
+</body>
+</html>

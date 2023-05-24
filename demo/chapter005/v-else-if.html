@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-if指令和template</title>
+</head>
+<body>
+  <div id="app">
+      <p v-if="grade>=90 && grade<=100">优秀</p>
+      <p v-else-if="grade>=70 && grade<90">良好</p>
+      <p v-else-if="grade>=60 && grade<70">及格</p>
+      <p v-else-if="grade>=0 && grade<60">不及格</p>
+      <p v-else>成绩有误！</p>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        grade: 98
+      }
+    });
+  </script>
+</body>
+</html>

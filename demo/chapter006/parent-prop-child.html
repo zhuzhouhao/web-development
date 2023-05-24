@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件</title>
+</head>
+<body>
+    <div id="app">
+      <my-cpn></my-cpn>
+    </div>
+    <template id="parent">
+      <div>
+        <h2>我是组件的标题</h2>
+        <p>我是组件的段落</p>
+      </div>
+    </template>
+    <script src="./js/vue.js"></script>
+    <script>
+      const myCpn = Vue.extend({
+        template: "#parent"
+      });
+
+      Vue.component('my-cpn', myCpn);
+
+      let app = new Vue({
+        el: '#app'
+      });
+    </script>
+
+</body>
+</html>

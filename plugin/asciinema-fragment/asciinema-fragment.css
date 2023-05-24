@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Sauce Code Pro Nerd Font Complete';
+  src: url('fonts/Sauce Code Pro Nerd Font Complete.ttf');
+}
+pre.asciinema-terminal {
+  font-family: 'Sauce Code Pro Nerd Font Complete';
+}
+
+asciinema-player div.control-bar {
+  display: none;
+}

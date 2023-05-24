@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constructor</title>
+</head>
+<body>
+  <script>
+    var user1 = {name: "张三"};
+    user1.print = function() {
+      document.write(this.name, "<br>");
+    }
+    user1.print();
+
+    var user2 = {name: "李四"};
+    //user2.print();
+
+    Object.prototype.objType = "user";
+    Object.prototype.showType = function() {
+      document.write(this.objType, "<br>");
+    }
+
+    user1.showType();
+    user2.showType();
+  </script>
+</body>
+</html>

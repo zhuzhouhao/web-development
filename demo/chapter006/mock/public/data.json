@@ -1,0 +1,112 @@
+{
+  "lists": [
+    {
+      "id": 1,
+      "title": "第一份问卷",
+      "time": "2030-1-1",
+      "state": "inissue",
+      "stateTitle": "发布中",
+      "checked": false,
+      "question": [
+        {
+          "num": "Q1",
+          "title": "单选题",
+          "type": "radio",
+          "isNeed": true,
+          "options": [
+            "选项一",
+            "选项二"
+          ]
+        },
+        {
+          "num": "Q2",
+          "title": "多选题",
+          "type": "checkbox",
+          "isNeed": true,
+          "options": [
+            "选项一",
+            "选项二",
+            "选项三",
+            "选项四"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "第二份问卷",
+      "time": "2030-1-1",
+      "state": "noissue",
+      "stateTitle": "未发布",
+      "checked": false,
+      "question": [
+        {
+          "num": "Q1",
+          "title": "单选题",
+          "type": "radio",
+          "isNeed": true,
+          "options": [
+            "选项一",
+            "选项二"
+          ]
+        },
+        {
+          "num": "Q2",
+          "title": "多选题",
+          "type": "checkbox",
+          "isNeed": true,
+          "options": [
+            "选项一",
+            "选项二",
+            "选项三",
+            "选项四"
+          ]
+        },
+        {
+          "num": "Q3",
+          "title": "文本题",
+          "type": "textarea",
+          "isNeed": true
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "第三份问卷",
+      "time": "2017-3-27",
+      "state": "noissue",
+      "stateTitle": "已发布",
+      "checked": false,
+      "question": [
+        {
+          "num": "Q1",
+          "title": "单选题",
+          "type": "radio",
+          "isNeed": true,
+          "options": [
+            "选项一",
+            "选项二"
+          ]
+        },
+        {
+          "num": "Q2",
+          "title": "多选题",
+          "type": "checkbox",
+          "isNeed": true,
+          "options": [
+            "选项一",
+            "选项二",
+            "选项三",
+            "选项四"
+          ]
+        },
+        {
+          "num": "Q3",
+          "title": "文本题",
+          "type": "textarea",
+          "isNeed": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let</title>
+</head>
+<body>
+  <script>
+  let a = [];
+  for (let i=0;i<10;i++) {
+    a[i] = function () {
+      document.write(i);
+    };
+  }
+  a[6]();
+  </script>
+</body>
+</html>

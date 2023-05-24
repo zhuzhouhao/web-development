@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Promise</title>
+</head>
+<body>
+  <div id="test-promise-log"></div>
+  <script>
+    let logging = document.getElementById('test-promise-log');
+
+    // 输出log到页面:
+    function log(s) {
+      let p = document.createElement('p');
+      p.innerHTML = s;
+      logging.appendChild(p);
+    }
+  
+//  RainSia::tip {{{Promise实际上封装了一个异步函数，函数有两个参数：<br> - resolve表示成功时的回调<br> - reject表示失败时的回调}}} RainSia::end
+    let p = new Promise(function (resolve, reject) {
+      log('start new Promise...');
+      let timeOut = Math.random() * 2;
+      log('set timeout to: ' + timeOut + ' seconds.');
+      setTimeout(function () {
+        if (timeOut < 1) {
+          log('call resolve()...');
+          //  RainSia::tip {{{逻辑成功时调用resolve}}} RainSia::end
+          resolve('200 OK');
+        }
+        else {
+          log('call reject()...');
+          //  RainSia::tip {{{逻辑失败时调用reject}}} RainSia::end
+          reject('timeout in ' + timeOut + ' seconds.');
+        }
+      }, timeOut * 1000);
+    });
+    log('about to test promise');
+    //  RainSia::tip {{{最终判断promise异步函数的执行结果}}} RainSia::end
+    p.then(function (r) {
+      log('Done: ' + r);
+    }).catch(function (reason) {
+      log('Failed: ' + reason);
+    });
+  </script>
+</body>
+</html>

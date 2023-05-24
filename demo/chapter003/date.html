@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Date对象</title>
+</head>
+  <script>
+    var timestamp = new Date();
+    document.write('<font size="2" ><B>' + timestamp.getFullYear()
+      + "年" + (timestamp.getMonth() + 1) + "月"
+      + timestamp.getDate()+ "日"+ '</B></font><BR>');
+
+    var hours;
+    var mins;
+    var time;
+    hours = timestamp.getHours();
+    if (hours >= 12)
+      time = " 下午";
+    else	
+      time = " 上午";
+    if (hours > 12) hours -= 12;
+    if (hours == 0) hours = 12;
+    mins = timestamp.getMinutes();
+    if (mins < 10) mins = "0" + mins;
+    document.write('<font size="2"><B>' + time
+      + hours + ":"+ mins  + '</B></font>');
+  </script>
+<body>
+</body>
+</html>

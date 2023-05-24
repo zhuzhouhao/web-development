@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-on指令</title>
+</head>
+<body>
+  <div id="app">
+    <h3 v-text="time"></h3>
+    <button type="button" v-on:click="showTime">点击显示时间</button>
+    <button type="button" @click="hideTime">点击隐藏时间</button>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        time: ""
+      },
+      methods: {
+        showTime() {
+          this.time = "北京时间：" +  new Date().toLocaleString();
+        },
+        hideTime() {
+          this.time= "";
+        }
+      }
+    });
+  </script>
+</body>
+</html>

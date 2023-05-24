@@ -1,0 +1,1762 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Web应用开发 第三章</title>
+
+    <link rel="stylesheet" href="css/include.css" media="all">
+
+    <!-- pre-libraries -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+
+    <script src="js/define.js"></script>
+	</head>
+	<body>
+		<div class="reveal pattern--random">
+			<div class="slides">
+
+        <script>
+          courseName = "Web应用开发";
+          chapterName = "第三章 JavaScript基础";
+          toc = [
+            {name: "JavaScript概述", desc: ""},
+            {name: "变量", desc: ""},
+            {name: "数据类型", desc: ""},
+            {name: "注释", desc: ""},
+            {name: "运算符", desc: ""},
+            {name: "逻辑结构", desc: ""},
+            {name: "函数", desc: ""},
+            {name: "对象", desc: ""},
+            {name: "JSON", desc: ""},
+            {name: "事件", desc: ""},
+            {name: "BOM操作", desc: ""},
+            {name: "DOM操作", desc: ""},
+          ];
+        </script>
+
+        <section class="cover" id="cover">
+        </section>
+
+				<section class="toc color--midnight" id="toc">
+				</section>
+
+				<section class="subsection color--radiant">
+				</section>
+
+				<section id="js-basics">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+              <h1 class="header">JavaScript概述</h1>
+						</div>
+						<div class="content full-heiht">
+              <p class="fragment">JavaScript是Web前端的主要编程语言，也是Web前端编程事实上的标准</p>
+              <p class="fragment">前端编程中的JavaScript语言实际上可以理解为三部分：</p>
+              <ul>
+                <li class="fragment">ECMAScript：整个JavaScript语言的语法基础，分为很多版本，具体要看浏览器支持什么版本</li>
+                <li class="fragment">BOM：通过程序的方式控制浏览器的行为</li>
+                <li class="fragment">DOM：通过程序的方式控制一个页面中的HTML元素，对页面中的“DOM树”中的元素进行增删查改等操作</li>
+              </ul>
+              <p class="fragment">
+                在HTML页面中引入JavaScript主要使用三种方法：
+              </p>
+              <ul>
+                <li class="fragment">内部脚本</li>
+                <li class="fragment">外部脚本</li>
+                <li class="fragment">嵌入元素事件中</li>
+              </ul>
+            </div>
+					</div>
+				</section>
+
+        <section id="js-notice">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">JavaScript注意事项</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">JavaScript是大小写敏感的语言</p>
+              <p class="fragment">JavaScript和Java语言基本没有关系，不会Java语言也可以学习JavaScript</p>
+              <p class="fragment">
+                技巧：要快速体验JavaScript的语法功能，可以直接通过浏览器的调试终端无需嵌入HTML文件
+              </p>
+              <p class="fragment">在浏览器中调试JavaScript语言有两种方式：</p>
+              <ul>
+                <li class="fragment">直接使用console.log()语句输出调试信息，然后在Console中查看</li>
+                <li class="fragment">使用浏览器的调试功能</li>
+              </ul>
+            </div>
+          </div>
+        </section> <!-- js-notice -->
+
+				<section id="inner-script">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+              <h1 class="header">内部脚本引入JavaScript</h1>
+						</div>
+						<div class="content">
+              <p class="fragment">JavaScript源代码被嵌在一个HTML文档中</p>
+              <p class="fragment">
+                JavaScript源代码可以出现在文档头部（&lt;head&gt; &lt;/head&gt;）和文档体部（&lt;body&gt; &lt;/body&gt;）。
+              </p>
+              <p class="fragment">
+                其语法如下：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script language="javascript">
+                     // JavaScript脚本语句
+                </script>
+              </code></pre>
+            </div>
+					</div>
+				</section>
+
+        <section id="inner-script-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用内部JavaScript脚本</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">
+                  编辑
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/internal-script.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" data-code="demo/chapter003/internal-script.html" data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- inline-style-example -->
+
+        <section id="external-script">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">引用外部脚本</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                在HTML页面中引用外部JavaScript脚本的语法格式如下所示：
+              </p>
+              <code class="lang-html" data-line-numbers="">
+                  &lt;script src="URL" type="text/javascript"&gt;
+                  &lt;/script&gt;
+              </code>
+            </div>
+          </div>
+        </section> <!-- inner-style -->
+
+        <section id="extenal-script-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：引用外部JavaScript脚本</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">
+                  编辑
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/external-script.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <form class="tab-container full-height">
+                <input type="radio" name="tab" class="tab-1" checked><span>HTML</span>
+                <input type="radio" name="tab" class="tab-2"><span>JavaScript</span>
+                <div class="tab-content-1">
+                  <pre><code class="lang-html" style="max-height: 700px;" data-code="demo/chapter003/external-script.html" data-line-numbers="">
+                  </code></pre>
+                </div>
+                <div class="tab-content-2">
+                  <pre><code class="lang-js" style="max-height: 700px;" data-code="demo/chapter003/script/myScript.js" data-line-numbers="">
+                  </code></pre>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section> <!-- inner-style-example -->
+
+        <section id="embed-script">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">嵌入到元素中的JavaScript</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">JavaScript脚本也可以直接嵌入到HTML元素中去</p>
+              <p class="fragment">这种方式多见于处理事件时</p>
+            </div>
+          </div>
+        </section> <!-- external-style -->
+
+        <section id="embed-script-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：嵌入JavaScript脚本</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">
+                  编辑
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/embed-script.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" data-code="demo/chapter003/embed-script.html" data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- external-style-example1 -->
+
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="declare-variable">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">变量的申明</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                和C/C++或者Java一类静态语言不同，JavaScript中变量是没有类型的，申明变量时不需要指定数据类型，而直接使用var关键字申明。例如：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              var foo;
+                </script>
+              </code></pre>
+              <p class="fragment">
+                也可以在同一行申明多个变量，不同变量之间使用逗号分隔，例如：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              var foo, bar;
+                </script>
+              </code></pre>
+              <p class="fragment">
+                变量名第一个字符可以是任何Unicode字符、美元标志符（$）或下划线（_）但不能是数字。
+              </p>
+              <p class="fragment">
+                其余字符可以是任意字符和数字。
+              </p>
+            </div>
+          </div>
+        </section> <!-- selector -->
+
+        <section id="key-word">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+              <h1 class="header">JavaScript关键字</h1>
+						</div>
+						<div class="content">
+              <p class="fragment">以下单词作为JavaScript中的关键字不能作为变量名使用：</p>
+              <p class="fragment">arguments break case catch class const continue debugger default delete do else enum eval export extends false finally for function if implements import in instanceof interface let new null package private protected public return static super switch this throw true try typeof var void while with yield</p>
+              <p class="fragment">此外以下这些不是关键字的单词，也不推荐作为变量名使用：</p>
+              <p class="fragment">Infinity NaN undefined class import super</p>
+            </div>
+					</div>
+				</section>
+
+        <section id="early-declare">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">变量的提前申明</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">所有通过var申明的变量无论其在任何地方，都会被提前到所在代码块的开头。</p>
+              <p class="fragment">因此，使用var可以在申明变量之前就使用变量，且变量可以重复申明。</p>
+              <p class="fragment">
+                例如：
+              </p>
+              <pre class="fragment"><code class="lang-cpp" data-line-numbers="">
+                <script type="text/template">
+                  console.log(a);  //不会出错，会输出undefined
+                  var a=100;
+                  console.log(a); //100;
+                </script>
+              </code></pre>
+              <p class="fragment">
+                其实际执行情况是：
+              </p>
+              <pre class="fragment"><code class="lang-cpp" data-line-numbers="">
+                <script type="text/template">
+                  var a;   //声明提前
+                  console.log(a);//undefined
+                  a=100; //赋值任然留在原位置
+                  console.log(a);//100
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- early-declare -->
+
+        <section id="early-declare-scope">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">变量提申的作用域</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">声明提前仅能将声明提前到所在作用域的顶部</p>
+              <p class="fragment">不能将变量提申至作用域之外，</p>
+              <p class="fragment">例如:</p>
+              <pre class="fragment"><code class="lang-cpp" data-line-numbers="">
+                <script type="text/template">
+                  function fn(){
+                       console.log(a); //undefined
+                       var a=100;
+                       console.log(a); //100
+                  };
+                  fn();
+                  console.log(a);//   报错未定义！
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- early-declare-scope -->
+
+        <section id="early-declare-example">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+              <h1 class="header">示例：变量的提前申明</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">
+                  编辑
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/early-declaration.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+						</div>
+						<div class="content full-height">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/early-declaration.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+					</div>
+				</section>
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="class-selector">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">数据类型概述</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">JavaScript申明变量虽然不用申明类型，但数据却是有类型的。</p>
+              <p class="fragment">一旦给变量赋值之后，变量就指向了某个类型的数据，但变量可以通过重新赋值来改变其指向的数据类型。</p>
+              <p class="fragment">赋值指的是使用赋值运算符“=”将符号右边的值赋给左边的变量，或者说让左边的变量指向右边的值，例如：</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              foo = 3;
+                </script>
+              </code></pre>
+              <p class="fragment">
+                变量的申明和赋值可以同时进行，例如：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              var foo = 3;
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- class-selector -->
+
+        <section id="datatype-category">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">数据类型的分类</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                数据类型可以分为两大类： 
+              </p>
+              <ul>
+                <li class="fragment">原始数据类型
+                  <ul class="fragment">
+                    <li>boolean</li>
+                    <li>number</li>
+                    <li>string</li>
+                    <li>null</li>
+                    <li>undefined</li>
+                    <li>bigint</li>
+                  </ul>
+                </li>
+                <li class="fragment">对象类型，有时也被称为引用类型
+                  <ul class="fragment">
+                    <li>简单对象类型（Object）</li>
+                    <li>数组（Array）</li>
+                    <li>函数（Function）</li>
+                    <li>日期（Date）</li>
+                    <li>正则表达式对象（RegExp）</li>
+                    <li>包装类型</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section> <!-- datatype-category -->
+
+        <section id="boolean-and-number">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">boolean和number</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">boolean布尔类型只能取两种值true和false。</p>
+              <p class="fragment">number数值类型主要包含整数（例如3）和浮点数（例如3.0）。</p>
+              <p class="fragment">JavaScript中所有的数字都是浮点数，但某些浏览器的JavaScript引擎内部也实现了整数。</p>
+              <p class="fragment">有一些数字是非常特殊的，NaN表示not a number。</p>
+              <p class="fragment">+Infinity表示正无穷大而-Infinity表示负无穷大。</p>
+              <p class="fragment">0也是分正负的，但是实际使用中几乎没有差别。</p>
+              <p class="fragment">number表示的数字会存在数据精度问题。</p>
+            </div>
+          </div>
+        </section> <!-- boolean-and-number -->
+
+        <section id="boolean-and-number-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用布尔和数字类型</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">
+                  编辑
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/boolean-and-number.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/boolean-and-number.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- boolean-and-number-example -->
+
+        <section id="string">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">字符串类型</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">string字符串类型表示文本数据，通常是通过字符串字面值来创建。</p>
+              <p class="fragment">字面值是通过单引号或双引号包围住的一些字符，例如‘hello’或“hello world”。</p>
+              <p class="fragment">字符串是一种特殊的原始数据类型，它具有很多属性和方法。</p>
+              <p class="fragment">在字符串中的每个元素占据了字符串的位置。</p>
+              <p class="fragment">第一个元素的索引为0，下一个是索引1，依此类推。</p>
+              <p class="fragment">字符串的长度是它的元素的数量，可以通过length属性获取。</p>
+              <p class="fragment">
+                字符串类型还有大量的方法可以简化字符串的开发。
+              </p>
+              <ul>
+                <li class="fragment">charAt(index)会返回指定位置的字符；</li>
+                <li class="fragment">indexOf(str,index)会返回指定字符串在原字符串中从制定位置开始首次出现的位置；</li>
+                <li class="fragment">substring(index1,index2)返回index1和index2指定位置之间的子字符串，但不包含index2所指向的字符；</li>
+                <li class="fragment">split(str)将返回以指定字符为分隔符将原字符串进行分割之后所形成的字符串。</li>
+                <li class="fragment">……</li>
+              </ul>
+            </div>
+          </div>
+        </section> <!-- string -->
+
+        <section id="string-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用字符串</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">
+                  编辑
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/string.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/string.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- string-example -->
+
+        <section id="null-and-undefined">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">null和undefined</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">null空类型只能取一个值null，表示对象未初始化，它和空对象{}不一样。</p>
+              <p class="fragment">undefined未定义类型表示一个变量申明时未初始化。</p>
+              <p class="fragment">在某些比较中null和undefined可能相等。</p>
+            </div>
+          </div>
+        </section> <!-- null-and-undefined -->
+
+        <section id="null-and-undefined-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用null和undefined</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">
+                  编辑
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/null-and-undefined.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/null-and-undefined.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- null-and-undefined-example -->
+
+        <section id="bigint">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">大整数类型</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">bigint表示任意精度的整数。使用 bigint类型可以安全地存储和操作大整数。</p>
+              <p class="fragment">bigint数值可以通过在整数末尾附加n来表示，例如9007199254740992n。</p>
+              <p class="fragment">bigint不能和普通数值类型混合运算，但是可以和普通数字类型比较大小。</p>
+              <p class="fragment">bigint不能用于Math对象中的方法</p>
+            </div>
+          </div>
+        </section> <!-- bigint -->
+
+        <section id="bigint-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：大整数类型</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">
+                  编辑
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/bigint.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/bigint.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- bigint-example -->
+
+        <section id="simple-object">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">简单对象类型</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">简单对象可以被看作是一组属性的集合。</p>
+              <p class="fragment">属性可以看作是对象当中的变量，可以通过属性名（变量名）指向不同的数据类型的值。</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              obj.name = “Kitty”; //为对象增加属性
+                </script>
+              </code></pre>
+              <p class="fragment">如果将属性名指向一个函数，那么将为这个对象创建一个方法。</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              obj.showInfo = function () { //为对象添加方法
+                    console.log(this.name + ”,” + this.age);
+                };
+                </script>
+              </code></pre>
+              <p class="fragment">通过“对象名.方法名”的方式可以调用该方法。</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              obj.showInfo(); //调用对象的方法
+                </script>
+              </code></pre>
+              <p class="fragment">Javascript中不存在公有方法和私有方法的区别</p>
+              <p class="fragment">一般使用下划线开头的变量名或者函数名作为私有成员的标志: _name或者__name</p>
+              <p class="fragment">但是否会被其他人调用，只能靠自觉</p>
+            </div>
+          </div>
+        </section> <!-- simple-object -->
+
+        <section id="simple-object-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用简单对象</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">
+                  编辑
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/simple-object.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/simple-object.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- simple-object-example -->
+
+        <section id="array">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">数组类型</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">数组（Array），可以用一个变量引用存储一系列的值，每一个值被称为一个元素，元素可以是任何数据类型。</p>
+              <p class="fragment">数组对象提供了length属性获取当前存储的值的个数。</p>
+              <p class="fragment">数组对象也提供了丰富的方法，可以对数组元素做各种操作。</p>
+              <ul>
+                <li class="fragment">join(sep)可以根据制定的分隔符把数组元素连接成一个字符串，</li>
+                <li class="fragment">sort()可以对数组元素进行排序，</li>
+                <li class="fragment">push(element)可以向数组最后增加新的元素，</li>
+                <li class="fragment">remove(index,count)可以删除数组中从指定位置开始数量为count个元素。</li>
+                <li class="fragment">……</li>
+              </ul>
+            </div>
+          </div>
+        </section> <!-- array -->
+
+        <section id="array-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用数组</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">
+                  编辑
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/array.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/array.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- array-example -->
+
+        <section id="function-date-regex">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">函数、日期和正则表达式</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">函数（Function），函数也是一种对象类型。</p>
+              <p class="fragment">日期（Date），用于表示日期和时间。</p>
+              <p class="fragment">算数（Math），提供了大量的工具方法，用于各种数学计算。</p>
+              <p class="fragment">正则表达式对象（RegExp）,以/开始并以/结尾的一个表达式，用于匹配字符串。</p>
+              <p class="fragment">正则表达式多用于对字符串的匹配和提取当中，是一个内容非常丰富的知识体系。</p>
+            </div>
+          </div>
+        </section> <!-- function-date-regex -->
+
+        <section id="date-exmaple">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用日期对象</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/date.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/date.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- date-exmaple -->
+
+        <section id="math-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用Math对象</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/math.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/math.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- math-example -->
+
+        <section id="regex-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">演示：使用正则表达式匹配和提取字符串</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/regex.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/regex.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- regex-example -->
+
+        <section id="wrap">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">包装类型</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">每个原始类型有一个关联类型，称之为包装类型。</p>
+              <p class="fragment">包装类型就是将原始类型的每个单词的首字母大写。例如，布尔类型的包装类型是Boolean，数字类型的包装类型是Number。</p>
+              <p class="fragment">包装类型也可以生成实例，他们的实例是对象类型，但实际开发中很少使用这些对象。</p>
+              <p class="fragment">包装类型可以作为函数调用并将值转换为原始数据类型。</p>
+            </div>
+          </div>
+        </section> <!-- wrap -->
+
+        <section id="wrap-type-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用包装类型</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/wrap-type.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/wrap-type.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- wrap-type-example -->
+
+        <section id="get-data-type">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">获取数据类型</h1>
+            </div>
+            <div class="content">
+             <p class="fragment">由于在申明变量的时候不需要指定其类型，同时变量可以赋不同类型的值，有时候我们需要知道变量现在所指向的值究竟是什么类型。</p>
+             <p class="fragment">这可以通过使用typeof运算符来实现。</p>
+             <p class="fragment">typeof是一个一元运算符，会以字符串的形式返回其后操作数的类型。 </p>
+            </div>
+          </div>
+        </section> <!-- get-data-type -->
+
+        <section id="get-data-type-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：获取数据类型</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/typeof.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/typeof.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- get-data-type-example -->
+
+        <section id="type-difference">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">原始类型与对象类型的区别</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                原始类型和对象类型主要有三点：
+              </p>
+              <ul>
+                <li class="fragment">如何比较两个值是否相等：原始数据类型被比较的时候比较的是内容是否相等；而对象类型被比较的时候是比较两个对象是不是同一个对象。程序清单程序清单3 10展示了他们之间的差别。</li>
+                <li class="fragment">是否可以更改和添加删除属性：原始数据类型的固有属性是无法添加和删除的，也无法修改其值；而对象类型可以添加删除属性，也可以修改属性的值。</li>
+                <li class="fragment">是否可以扩展：原始类型是固定的，开发者无法创建新的原始数据类型；而对象类型用户是可以扩展的，可以通过构造函数定义新的对象类型。</li>
+              </ul>
+            </div>
+          </div>
+        </section> <!-- type-difference -->
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="commet">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">注释</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">注释是程序员对代码的解释，不会被程序所执行。</p>
+              <p class="fragment">JavaScript主要有两种注释：</p>
+              <ul>
+                <li class="fragment">单行注释以//开头，以换行符结尾</li>
+                <li class="fragment">多行注释放在符号 /*和符号*/之间，</li>
+              </ul>
+              <p class="fragment">
+                多行注释内部可以嵌套单行注释，但多行注释不能相互嵌套。
+              </p>
+            </div>
+          </div>
+        </section> <!-- commet -->
+
+        <section id="comments-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用注释</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">
+                  编辑
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/comments.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/comments.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- comments-example -->
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="operator">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">运算符</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                JavaScript中运算符主要有以下几种：
+              </p>
+              <ul>
+                <li class="fragment">算数运算符：加法+、减法-、乘法*、除法/、取余%、自增++、自减--。</li>
+                <li class="fragment">赋值运算符：赋值=、加性赋值+=、减性赋值-=、乘性赋值*=、除性赋值/=、模性赋值%=。</li>
+                <li class="fragment">关系运算符: 等于==、绝对等===、不等于!=、绝对不等!==、大于&gt;、小于&lt;、大于等于&gt;=、小于等于&lt;=、三目运算?:。</li>
+                <li class="fragment">逻辑运算符: 与&amp;&amp;、或||、非!。</li>
+                <li class="fragment">位运算符：按位与&amp;、按位或|、按位非~、异或^、填零左移&lt;&lt;、有符号右移&gt;&gt;、填零右移&gt;&gt;&gt;。</li>
+                <li class="fragment">类型运算符：类型typeof、实例instanceof。</li>
+              </ul>
+              <p class="fragment">大部分运算符和其他编程语言类似，需要特别指出的是等于的判断。</p>
+              <p class="fragment">在JavaScript中，相等判断主要分为两种，普通等于==和绝对等于===。他们之间的差别主要体现在：</p>
+              <ul>
+                <li class="fragment">在普通等于时，null和undefined是相等的；而在绝对等于时，他们不相等。</li>
+                <li class="fragment">在比较number和bigint的相同数值时，普通等于下他们相等，而绝对等于时，他们不相等。</li>
+                <li class="fragment">普通等于在比较时可能出现类型自动转换；而绝对等于不会发生类型自动转换。</li>
+              </ul>
+            </div>
+          </div>
+        </section> <!-- operator -->
+
+        <section id="and-or-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：逻辑运算符的巧妙应用</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/and-or.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/and-or.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- and-or-example -->
+
+        <section id="equal-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：相等和绝对相等的不同</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/equal.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/equal.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- equal-example -->
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="logic-structure">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">逻辑结构</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                JavaScript中的逻辑结构主要分为：
+              </p>
+              <ul>
+                <li class="fragment">判断结构：
+                  <ul>
+                    <li class="fragment">if...else if...else</li>
+                    <li class="fragment">switch...case</li>
+                  </ul>
+                </li>
+                <li class="fragment">循环结构：
+                  <ul>
+                    <li class="fragment">for</li>
+                    <li class="fragment">while</li>
+                    <li class="fragment">do...while</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section> <!-- logic-structure -->
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="function">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">函数</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">函数可以将一些代码片段统一成一个单元，方便在其他地方多次调用。</p>
+              <p class="fragment">JavaScript中可以通过function关键字来定义函数。其语法如下：</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              function 函数名(参数列表) {
+                  函数体
+              }
+                </script>
+              </code></pre>
+              <p class="fragment">此外，定义函数的时候也可以不指定函数的名字，这样的函数称为匿名函数。</p>
+              <p class="fragment">然而这种函数定义之后无法再次调用，可以将匿名函数赋值给某个变量或者作为参数传给其他函数。</p>
+              <p class="fragment">在JavaScript中函数会被提前申明，无论在当前作用域中什么地方写的函数，他们全会被移动到当前作用域开始之处。</p>
+              <p class="fragment">这允许你在函数声明之前调用它们。</p>
+              <p class="fragment">
+                但使用匿名函数方式赋值给变量会出现问题，虽然变量会被提前申明，但是赋值的过程并不会提前。
+              </p>
+            </div>
+          </div>
+        </section> <!-- function -->
+
+        <section id="function-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：函数的使用</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/function.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/function.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- function-example -->
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="constructor">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">构造函数和对象</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">在JavaScript中，可以将函数定义为构造函数。</p>
+              <p class="fragment">通过调用构造函数可以创建对象。</p>
+              <p class="fragment">构造函数可以带有参数，也可以不带参数。</p>
+              <p class="fragment">其语法格式如下所示：</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              function 构造函数名([参数列表]]){
+                 this.属性1=value1|param1;
+                 …
+                 this.方法名=function(){};
+                 …                         
+              };
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- constructor -->
+
+        <section id="constructor-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：将函数作为构造函数使用</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/constructor.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/constructor.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- constructor-example -->
+
+        <section id="prototype">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">原型</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">通过原型向对象添加必要的属性和方法。</p>
+              <p class="fragment">这种方法添加的属性和方法属于对象，每个对象实例的属性值和方法都是相同的</p>
+              <p class="fragment">可以再通过赋值的方式修改需要修改的属性或方法。</p>
+              <p class="fragment">通过原型添加属性的语法如下：</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              functionName.prototype.propertyName=value
+                </script>
+              </code></pre>
+              <p class="fragment">
+                通过原型添加方法的语法如下：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              functionName.prototype.methodName=function() {
+                //函数体
+              }
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- prototype -->
+
+        <section id="prototype-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用原型方法添加方法和属性</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/prototype.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/prototype.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- prototype-example -->
+
+        <section id="object-notice">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">对象的注意事项</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">每个函数都有一个特殊变量this，这个特殊变量作为对象本身。</p>
+              <p class="fragment">若读取一个不存在的属性，将会得到undefined值。</p>
+              <p class="fragment">如果你引用一个方法，它将失去和对象的连接。就其本身而言，函数不是方法，其中的this值具有不确定性。</p>
+              <p class="fragment">解决办法是使用函数内置的bind()方法。它创建一个新函数，其this值固定为给定的参数值。</p>
+              <p class="fragment">若函数中出现this关键字，要时刻小心表达式中的this所指代的内容。</p>
+            </div>
+          </div>
+        </section> <!-- object-notice -->
+
+        <section id="bind-this-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用bind绑定this对象</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/bind.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/bind.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- bind-this-example -->
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="json-basics">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">JSON对象概述</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">简单地说，JSON可以将JavaScript对象中表示的一组数据转换为字符串，然后就可以在函数之间轻松地传递这个字符串，或者在异步应用程序中将字符串从客户端传递给服务器端程序。</p>
+              <p class="fragment">JSON字符串对于初学者来说看起来有点儿古怪，但是JavaScript很容易解释它，而且JSON可以表示比名称/值对更复杂的结构。</p>
+              <p class="fragment">例如，可以表示数组和复杂的对象，而不仅仅是键和值的简单列表。</p>
+            </div>
+          </div>
+        </section> <!--  -->
+
+        <section id="json-theory">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">JSON原理</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                从大的方面来说，JSON中只有两种基本结构：
+              </p>
+              <ul>
+                <li class="fragment">对象：
+                  <p class="fragment">就是键/值对的集合，用一对大括号（{}）表示，里面可以有零个、一个或多个键/值对。</p>
+                  <p class="fragment">若有多个键/值对的时候，它们之间用逗号（,）分隔。</p>
+                  <p class="fragment">键值对在对象中也被称为对象的属性。属性由键和值两部分组成，它们之间由冒号（:）分隔。</p>
+                  <p class="fragment">键必须是字符串类型，并且在新版本的JSON规定中，键的字符串的引号（””）可以省略（但开发者必须意识到这是个字符串）。</p>
+                </li>
+                <li class="fragment">数组：
+                  <p class="fragment">是值的集合，用一对方括号（[]）表示，里面可以有零个、一个或多个值。</p>
+                  <p class="fragment">若有多个值时，它们之间使用逗号（,）分隔。</p>
+                  <p class="fragment">在数组中，每一个值被称为数组的元素。</p>
+                  <p class="fragment">数组的每一个元素的值类型都可以不同。</p>
+                </li>
+              </ul>
+              <p class="fragment">
+                JSON中通常可以使用7种值类型，它们可以用做属性的值部分或者是数组的元素。
+              </p>
+              <p class="fragment">
+                对象、数组、字符串、数字、true、false和null。
+              </p>
+              <p class="fragment">
+                对象和数组是可以相互嵌套定义的。
+              </p>
+            </div>
+          </div>
+        </section> <!-- json-theory -->
+
+        <section id="json-method">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">JSON方法</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                JSON对象也可以添加方法，其语法如下：
+              </p>
+              <pre class="fragment"><code class="lang-js" data-line-numbers="">
+                <script type="text/template">
+                  var 对象名={
+                       propertyName:value, 	//对象内的属性
+                       functionName:function(){ 	//对象内的方法
+                            // statements;
+                        }
+                  };
+                </script>
+              </code></pre>
+              <p class="fragment">
+                对象的方法中可以使用this引用对象的其他属性和方法。
+              </p>
+            </div>
+          </div>
+        </section> <!-- json-method -->
+
+        <section id="json-object">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用Json对象</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/json-object.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/json-object.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- json-object -->
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="event">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">事件</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">JavaScript语言是一个事件驱动的编程语言。</p>
+              <p class="fragment">事件是脚本处理响应用户动作的方法</p>
+              <p class="fragment">JavaScript对事件的处理分为定义事件和编写事件脚本两个阶段</p>
+              <p class="fragment">几乎每个HTML元素都可以进行事件定义，例如：浏览器窗口、窗体文档、图形、链接</p>
+              <p class="fragment">每种元素能响应的事件都不相同，例如，</p>
+              <ul>
+                <li class="fragment">按钮一般响应点击事件 onclick，</li>
+                <li class="fragment">文本框一般响应按键事件onkeypress或者修改事件onchange，</li>
+                <li class="fragment">窗口一般响应大小改变事件onresize</li>
+                <li class="fragment">……</li>
+              </ul>
+              <p class="fragment">
+                在元素中可以直接写事件处理方式，一般为调用函数，其语法如下：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+                  <元素 属性="属性值" on事件名="事件处理函数名()">
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- event -->
+
+        <section id="event-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用事件</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/event.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/event.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- event-example -->
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="inner-object">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">内置对象</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">在浏览器当中运行JavaScript语言，可以直接使用很多内置对象或内置函数</p>
+              <p class="fragment">在所有内置对象中，有两个内置对象非常重要：</p>
+              <ul>
+                <li class="fragment">window：BOM的入口，可以通过window对象操作浏览器的行为</li>
+                <li class="fragment">document：DOM的入口，可以通过document对象操作页面的内容</li>
+              </ul>
+            </div>
+          </div>
+        </section> <!-- inner-object -->
+
+        <section id="window-object">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">window对象</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">window对象是BOM的入口</p>
+              <p class="fragment">window对象的常用属性有：</p>
+              <ul>
+                <li class="fragment">location</li>
+                <li class="fragment">history</li>
+              </ul>
+              <p class="fragment">
+                window对象还包含了很多常用的内置方法：
+              </p>
+              <ul style="columns: 2; width: 100%;">
+                <li class="fragment">alert</li>
+                <li class="fragment">prompt</li>
+                <li class="fragment">confirm</li>
+                <li class="fragment">setTimeout</li>
+                <li class="fragment">setInterval</li>
+                <li class="fragment">……</li>
+              </ul>
+              <p class="fragment">
+                window对象能够响应的事件有：
+              </p>
+              <ul style="columns: 2; width: 100%;">
+                <li class="fragment">onload</li>
+                <li class="fragment">onmouseover</li>
+                <li class="fragment">onclick</li>
+                <li class="fragment">onkeydown</li>
+                <li class="fragment">onchange</li>
+                <li class="fragment">……</li>
+              </ul>
+              <p class="fragment">
+                <b>技巧</b>：由于window对象中的属性和方法等使用频率很高，在使用时，通常可以不写window前缀。
+              </p>
+            </div>
+          </div>
+        </section> <!-- window-object -->
+
+        <section id="location-object">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">location对象</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">location对象对应于浏览器的地址栏</p>
+              <p class="fragment">常用属性有：</p>
+              <ul>
+                <li class="fragment">host：主机名和当前URL的端口号</li>
+                <li class="fragment">hostname：当前URL的主机名</li>
+                <li class="fragment">href：完整的URL</li>
+              </ul>
+              <p class="fragment">
+                常用方法有：
+              </p>
+              <ul>
+                <li class="fragment">reload：重新加载当前文档</li>
+                <li class="fragment">replace：用新的文档替换当前文档</li>
+              </ul>
+            </div>
+          </div>
+        </section> <!-- location-object -->
+
+        <section id="history-object">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">history对象</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                history对应于浏览器的浏览历史，其常用方法包括：
+              </p>
+              <ul>
+                <li class="fragment">back：后退一页</li>
+                <li class="fragment">forward：前进一页</li>
+                <li class="fragment">go：跳转到某页</li>
+              </ul>
+            </div>
+          </div>
+        </section> <!-- history-object -->
+
+        <section id="location-history-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用location和history对象</h1>
+              <h1 class="right">
+                <a href="demo/chapter003/main.html" target="_blank" rel="noopener noreferrer">预览main</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/top.html" target="_blank" rel="noopener noreferrer">预览top</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <form class="tab-container full-height">
+                <input type="radio" name="tab" class="tab-1" checked><span>main.html</span>
+                <input type="radio" name="tab" class="tab-2"><span>top.html</span>
+                <input type="radio" name="tab" class="tab-3"><span>flower.html</span>
+                <div class="tab-content-1">
+                  <pre><code class="lang-html" style="max-height: 700px;" 
+                    data-code="demo/chapter003/main.html" data-line-numbers="">
+                  </code></pre>
+                </div>
+                <div class="tab-content-2">
+                  <pre><code class="lang-html" style="max-height: 700px;" 
+                    data-code="demo/chapter003/top.html" data-line-numbers="">
+                  </code></pre>
+                </div>
+                <div class="tab-content-3">
+                  <pre><code class="lang-html" style="max-height: 700px;" 
+                    data-code="demo/chapter003/flower.html" data-line-numbers="">
+                  </code></pre>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section> <!-- location-history-example -->
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="document-object">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">document对象</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">document对象是DOM的入口</p>
+              <p class="fragment">其常用属性有：</p>
+              <ul>
+                <li class="fragment">referrer</li>
+                <li class="fragment">URL</li>
+              </ul>
+              <p class="fragment">
+                此外，document对象还有大量的方法用于获取当前页面中的HTML元素：
+              </p>
+              <ul>
+                <li class="fragment">getElementById</li>
+                <li class="fragment">getElementsByName</li>
+                <li class="fragment">getElementsByTagName</li>
+                <li class="fragment">getElementsByClassName</li>
+                <li class="fragment">……</li>
+              </ul>
+              <p class="fragment">
+                通过以上方法获取到元素后，可以根据元素类型对元素进行操作
+              </p>
+            </div>
+          </div>
+        </section> <!-- document-object -->
+
+        <section id="dom-search">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">DOM操作之：查</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">在DOM树中查找到元素是DOM操作的基本条件之一：</p>
+              <p class="fragment">DOM树查询有两种基本方法</p>
+              <p class="fragment">基本方法一是使用前面介绍过的document.getElementBy...方法的其中一种：</p>
+              <ul class="fragment">
+                <li>getElementById：通过Id查找页面元素，返回值唯一</li>
+                <li>getElementsByName：通过标签name属性查询页面元素，返回值不唯一</li>
+                <li>getElementsByTagName：通过标签名称查询页面元素，返回值不唯一</li>
+                <li>getElementsByClassName：通过类名称查询页面元素，返回值不唯一</li>
+                <li>……</li>
+              </ul>
+              扩展方法则是使用document.querySelector
+              <p class="fragment">querySelector()：通过选择器查询页面元素，返回值唯一</p>
+              <p class="fragment">querySelectorAll()：通过选择器查询页面元素，返回值不唯一</p>
+            </div>
+          </div>
+        </section> <!-- dom-search -->
+
+
+        <section id="dom-search-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用JS查找页面元素，方法一</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/dom-search.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/dom-search.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- dom-search-example -->
+
+        <section id="by-id-thinking">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">思考</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">通过getElementById方法可以快速访问某个HTML元素，而不必通过DOM层层遍历。</p>
+              <p class="fragment">思考：定义了两个相同ID 元素，getElementById方法获取的是哪一个HTML元素</p>
+              <p class="fragment">使用getElementById方法时如果元素的ID不是唯一的，那么会获得第一个符合条件的元素。</p>
+            </div>
+          </div>
+        </section> <!-- by-id-thinking -->
+
+        <section id="dom-search-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用JS查找页面元素，方法二</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/dom-search2.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/dom-search2.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="dom-traverse">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">节点遍历</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">查找到节点之后，可以遍历节点的子元素：</p>
+              <p class="fragment">childeNodes 属性是返回所有子节点对象</p>
+              <p class="fragment">子节点的对象类型主要包括有：元素（值为1）、属性（值为2）、文本（值为3）、注释（值为8）、文档（值为9）。</p>
+              <p class="fragment">
+                对于结点的访问还有以下主要属性：
+              </p>
+              <ul>
+                <li class="fragment">firstChild（返回第一个子节点）</li>
+                <li class="fragment">lastChild（返回最后一个子节点）</li>
+                <li class="fragment">parentNode（返回父节点的对象）</li>
+                <li class="fragment">nextSibling（返回下一个兄弟节点的对象）</li>
+                <li class="fragment">previousSibling（返回前一个兄弟节点的对象）</li>
+              </ul>
+              <p class="fragment">
+                nodeName属性用于返回节点的HTML标记名称，返回值使用英文的大写字母来表示，例如P，DIV。
+              </p>
+              <p class="fragment">
+                通过getAttribute方法可以获取节点的属性
+              </p>
+            </div>
+          </div>
+        </section> <!-- dom-traverse -->
+
+        <section id="dom-traverse-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：遍历节点</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/dom-traverse.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/dom-traverse.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- dom-traverse-example -->
+
+        <section id="dom-add">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">DOM操作之：增</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                使用document.createElement方法可以创建新节点
+              </p>
+              <p class="fragment">可以通过DOM操作向页面中添加元素</p>
+              <p class="fragment">可以使用以下方法：</p>
+              <ul>
+                <li class="fragment">
+                  appendChild：对元素最后添加子元素
+                </li>
+                <li class="fragment">
+                  insertBefore方法是在当前节点插入一个新节点
+                  t被设置为null，那新节点被当作最后一个子节点插入
+                  应该被插入targetElement之前的最近位置。
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </section> <!-- dom-add -->
+
+        <section id="dom-add">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：新增节点</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/dom-add.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/dom-add.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- dom-add -->
+
+        <section id="dom-remove">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">DOM操作之：删</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">可以通过DOM操作删除页面中已经存在的元素</p>
+              <p class="fragment">可以使用以下方法：</p>
+              <p class="fragment">removeChild:删除当前节点下的某个子节点，并返回被删除的节点。</p>
+            </div>
+          </div>
+        </section> <!-- dom-remove -->
+
+        <section id="dom-remove-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：删除元素</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/dom-remove.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/dom-remove.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- dom-remove-example -->
+
+        <section id="dom-change">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">DOM操作之：改</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">使用cloneNode方法复制并返回当前节点的复制节点，这个复制得到的节点是一个孤立的节点，不在document树中。</p>
+              <p class="fragment"><b>注意</b>： 复制原来节点的属性值，包括ID属性，所以再把这个节点当作新节点加到document之前，一定要修改ID属性，以便使ID属性保持唯一。</p>
+              <p class="fragment">
+                replaceChild方法是把当前节点的一个子节点替换成另一个节点。
+              </p>
+              <p class="fragment">
+                通过setAttribute属性可以修改节点的属性
+              </p>
+            </div>
+          </div>
+        </section> <!-- dom-change -->
+
+        <section id="dom-change-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：修改元素</h1>
+              <h1 class="right">
+                <a href="javascript:void(0)" class="edit-code">编辑</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="demo/chapter003/dom-change.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" style="max-height: 700px;"  data-code="demo/chapter003/dom-change.html"
+                data-line-numbers="">
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- dom-change-example -->
+
+        <section id="thank-you-slide" class="end color--radiant">
+        </section>
+
+      </div> <!-- slides -->
+    </div> <!-- reveal -->
+
+		<script>
+      language = 'cn';
+
+      var myConfig = {
+        "math": math, 
+        "asciinema": {
+          rows: 24,
+          cols: 81
+        }
+      };
+
+      defineMyPlugins = function() {
+        myPreloadPlugins = [
+          /**** my plugins ****/
+          RevealLoadCode, RevealFragmentOrder,
+        ];
+        myPlugins = [
+          /**** built-in plugins ****/
+          /**** third-party plugins ****/
+          /**** my plugins ****/
+          RevealCodeTips, RevealFragmentGroup,
+        ];
+      }
+    </script>
+
+    <script src="js/common.js"></script>
+
+	</body>
+</html>

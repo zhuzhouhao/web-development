@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用typeof获取类型</title>
+</head>
+<body>
+  <script>
+    var num;
+    document.write(typeof num, "<br>");
+    num = 100;
+    document.write(typeof num, "<br>");
+    num = false;
+    document.write(typeof num, "<br>");
+    num = {};
+    document.write(typeof num, "<br>");
+    num = new Object();
+    document.write(typeof num, "<br>");
+    num = [];
+    document.write(typeof num, "<br>");
+    num = Array();
+    document.write(typeof num, "<br>");
+    num = null;
+    document.write(typeof num, "<br>");
+    num = new Number(100);
+    document.write(typeof num, "<br>");
+    num = /(.*)/;
+    document.write(typeof num, "<br>");
+    function add(a, b){
+      return a + b;
+    }
+    document.write(typeof add, "<br>");
+  </script>
+</body>
+</html>

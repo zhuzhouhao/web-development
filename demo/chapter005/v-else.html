@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-if指令和template</title>
+</head>
+<body>
+  <div id="app">
+    <template v-if="isLogin">
+      你好，<a href="#" class="name">张三</a>&nbsp;
+      <a href="#">注销</a>
+    </template>
+    <template v-else>
+      <a href="#" class="go-login">登录</a>
+      <a href="#" class="go-register">注册</a>
+    </template>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        isLogin: false
+      }
+    });
+  </script>
+</body>
+</html>

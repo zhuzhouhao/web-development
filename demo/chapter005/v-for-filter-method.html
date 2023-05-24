@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-for指令</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="n in even()"> {{n}}</li>
+    </ul>
+    <button @click="change">变</button>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        numbers: [1, 2, 3, 4, 5]
+      },
+      methods: {
+        even() {
+          let result = [];
+          for(let num of this.numbers) {
+            if(num % 2 === 0) {
+              result.push(num);
+            }
+          }
+          return result;
+        },
+        change(){
+          this.numbers.push(6);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

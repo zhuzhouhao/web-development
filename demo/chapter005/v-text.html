@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-text指令</title>
+</head>
+<body>
+  <div id="app">
+    <h3>内容：<span v-text="area"></span></h3>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        area: "使用文字绑定"
+      }
+    });
+  </script>
+</body>
+</html>

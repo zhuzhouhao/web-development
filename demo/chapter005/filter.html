@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>过滤器</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="p in products">
+        <span>{{p.name | productName}}</span><br>
+        <span>{{p.price | productPrice}}</span>
+      </li>
+    </ul>
+    <button @click="change">变</button>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        products: [
+          {
+            name: "方便面",
+            price: 2.5
+          },{
+            name: "卤鸡蛋",
+            price: 1.5
+          },{
+            name: "榨菜",
+            price: 3
+          }
+        ]
+      },
+      filters: {
+        productName(value) {
+          return "商品名称：" + value;
+        },
+        productPrice(value) {
+          return "商品价格：￥" + value;
+        }
+      },
+      methods: {
+        change(){
+          this.products.push({name: "辣条", price: 1});
+        }
+      }
+    });
+  </script>
+</body>
+</html>

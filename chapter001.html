@@ -1,0 +1,1600 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Web应用开发 第一章</title>
+
+    <link rel="stylesheet" href="css/include.css">
+
+    <!-- pre-libraries -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+
+    <!-- post-libraries -->
+    <script src="js/define.js"></script>
+
+	</head>
+	<body>
+		<div class="reveal pattern--random">
+			<div class="slides">
+
+        <script>
+          courseName = "Web应用开发";
+          chapterName = "第一章 HTML基础";
+          toc = [
+            {name: "HTML文件的基本结构", desc: ""},
+            {name: "标题标记的使用", desc: "<h1>--<h6>"},
+            {name: "字体和文字修饰", desc: ""},
+            {name: "段落、换行和预格式化", desc: ""},
+            {name: "转义字符", desc: ""},
+            {name: "列表", desc: "<ul>和<ol>"},
+            {name: "超链接", desc: ""},
+            {name: "图片", desc: ""},
+            {name: "表格", desc: ""},
+            {name: "表单和表单元素", desc: ""},
+          ];
+        </script>
+
+        <section class="cover" id="cover">
+        </section>
+
+				<section class="toc color--midnight" id="toc">
+				</section>
+
+				<section class="subsection color--radiant">
+				</section>
+
+				<section id="html-file">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+              <h1 class="header">HTML文件基础知识</h1>
+						</div>
+						<div class="content full-heiht">
+              <p class="fragment">HTML文件是标准的ASCII文件，且其后缀名为htm或html的文件。</p>
+              <p class="fragment">可以使用任何能够生成TXT类型源文件的文本编辑器来制作超文本标记语言文件。</p>
+              <p class="fragment">HTML文件中的标记是不区分大小写的。</p>
+              <p class="fragment"><b>注意</b>：现代HTML文件通常使用UTF-8编码，因此所使用的文本编辑器最好支持该编码。</p>
+              <p class="fragment">标准的超文本标记语言文件都具有一个基本的文档结构，标记一般都是成对出现（部分标记也有单标记，例如：&lt;br /&gt;）。</p>
+            </div>
+					</div>
+				</section>
+
+				<section id="html-file-example">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+              <h1 class="header">示例：在浏览器中显示“Hello World!”</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/html-file-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+						</div>
+						<div class="content">
+              <div class="code-tips" style="display:none;">
+                <p class="code-tip" data-code-line-numbers="1">
+                  文档声明：告诉浏览器以下文件用HTML版本解析
+                </p>
+                <p class="code-tip" data-code-line-numbers="2">
+                  告诉浏览器以下文件为HTML文件，开始
+                </p>
+                <p class="code-tip" data-code-line-numbers="3">
+                  表示HTML文件的头部
+                </p>
+                <p class="code-tip" data-code-line-numbers="4">
+                  网页的编码格式为UTF-8，即国际通用编码格式
+                </p>
+                <p class="code-tip" data-code-line-numbers="5">
+                  网页的标题是“第一个网页”
+                </p>
+                <p class="code-tip" data-code-line-numbers="6">
+                  HEAD结束标签
+                </p>
+                <p class="code-tip" data-code-line-numbers="7">
+                  HTML文件的实体部分开始
+                </p>
+                <p class="code-tip" data-code-line-numbers="8">
+                  显示在网页中的信息内容都放在BODY标签里
+                </p>
+                <p class="code-tip" data-code-line-numbers="9">
+                  HTML文件的实体部分结束
+                </p>
+                <p class="code-tip" data-code-line-numbers="10">
+                  HTML文件结束
+                </p>
+              </div>
+              <pre><code class="lang-html" data-line-numbers="0|1|2|3|4|5|6|7|8|9|10">
+                <script type="text/template">
+<!DOCTYPE html>     		
+<html> 						
+<head> 						
+  <meta charset="UTF-8">	
+  <title>第一个网页</title>	
+</head>						
+<body>						
+    Hello World!			
+</body>						
+</html>						
+                </script>
+              </code></pre>
+            </div>
+					</div>
+				</section>
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="heading-tags">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+              <h1 class="header">标题标记基础知识</h1>
+						</div>
+						<div class="content">
+              <p class="fragment">标题可用来分隔文章中的文字</p>
+              <p class="fragment">标题标记的语法格式如下：</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+                  <hn align="对齐方式">标题文本</hn>
+                </script>
+              </code></pre>
+              <p class="fragment">HTML中提供了六级标题，为&lt;h1&gt;至&lt;h6&gt;</p>
+              <p class="fragment">align属性是可选属性，用于指定标题的对齐方式，其取值有三种：left、center、right</p>
+            </div>
+					</div>
+				</section>
+
+        <section id="heading-tags-example">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+              <h1 class="header">示例：在页面中显示不同的标题</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/html-tags-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+						</div>
+						<div class="content full-height">
+              <div class="code-tips" style="display:none;">
+                <p class="code-tip" data-code-line-numbers="8">
+                  设置文字Hello World!为一级标题样式显示
+                </p>
+                <p class="code-tip" data-code-line-numbers="10">
+                  设置文字Hello World!为三级标题样式显示，并设置居中对齐方式
+                </p>
+                <p class="code-tip" data-code-line-numbers="13">
+                  设置文字Hello World!为六级标题样式显示
+                </p>
+              </div>
+              <pre><code class="lang-html" style="max-height: 700px;" data-line-numbers="0|8|10|13">
+                <script type="text/template">
+<!DOCTYPE html>     		
+<html> 						
+<head> 						
+  <meta charset="UTF-8">	
+  <title>标题标记的使用</title>
+</head>						
+<body>						
+    <h1>Hello world 1</h1>			
+    <h2>Hello world 2</h2>	
+    <h3 align="center">Hello world 3</h3>	
+    <h4>Hello world 4</h4>	
+    <h5>Hello world 5</h5>	
+    <h6>Hello world 6</h6>			
+</body>						
+</html>						
+                </script>
+              </code></pre>
+            </div>
+					</div>
+				</section>
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="font">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+              <h1 class="header">字体基础知识</h1>
+						</div>
+            <div class="content full-height">
+              <p class="fragment">
+                字体标记的基本语法如下：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+                  <font  face="字体名称"  size="字号"  color="字体颜色" >
+                    文字
+                  </font>
+                </script>
+              </code></pre>
+              <p class="fragment">color属性设定文字颜色</p>
+              <p class="fragment">size属性设置指定文字的大小，其取值范围是1~7</p>
+              <p class="fragment">face属性设置字体的类型，中文的默认字体是宋体。</p>
+            </div>
+					</div>
+				</section>
+
+        <section id="font-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：设置文字的字体、字号和颜色</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/font-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <pre><code class="lang-html" style="max-height: 700px;" data-line-numbers="">
+                <script type="text/template">
+<!DOCTYPE html>     		
+<html> 						
+<head> 						
+  <meta charset="UTF-8">	
+  <title>字体标记的使用</title>
+</head>						
+<body>						
+  <font size="4" color="red" face="隶书">
+    四川师范大学
+  </font>
+  <font size="5" color="green" face="黑体">
+     计算机科学学院
+  </font>
+  <font size="6" color="blue" face="宋体">
+    夏羽
+  </font>
+</body>						
+</html>						
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="font-modifier">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">文字修饰基础知识</h1>
+            </div>
+            <div class="content">
+              <p>
+                常用的文字修饰：
+              </p>
+              <table>
+              <thead>
+                <tr>
+                  <th>标  记</th>
+                  <th>描  述</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>&lt;b&gt;......&lt;/b&gt;</td>
+                  <td>加粗bold。如：&lt;b&gt;HTML文件&lt;/b&gt;</td>
+                </tr>
+                <tr>
+                  <td>&lt;i&gt;......&lt;/i&gt;</td>
+                  <td>斜体italic。如：&lt;i&gt;HTML文本&lt;/i&gt;</td>
+                </tr>
+                <tr>
+                  <td>&lt;u&gt;......&lt;/u&gt;</td>
+                  <td>下划线underline。如：&lt;u&gt;HTML文本&lt;/u&gt;</td>
+                </tr>
+                <tr>
+                  <td>&lt;s&gt;......&lt;/s&gt;</td>
+                  <td>删除线strike。如：&lt;s&gt;删除线&lt;/s&gt;</td>
+                </tr>
+                <tr>
+                  <td>&lt;sup&gt;......&lt;/sup&gt;</td>
+                  <td>上标</td>
+                </tr>
+                <tr>
+                  <td>&lt;sub&gt;......&lt;/sub&gt;</td>
+                  <td>下标</td>
+                </tr>
+              </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="font-modifier-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：文字修饰</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/font-modifier.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <pre><code class="lang-html" style="max-height: 700px;" data-line-numbers="">
+                <script type="text/template">
+<!DOCTYPE html>     		
+<html> 						
+<head> 						
+  <meta charset="UTF-8">	
+  <title>文字修饰标记</title>
+</head>						
+<body>						
+  <u>
+    下划线
+    <i>
+     	倾斜下划线
+        <b>加粗倾斜下划线</b>
+     </i>
+  </u>
+  <h1>
+  H<sub>2</sub>0<br />
+  X<sup>2</sup>+Y<sup>2</sup>=Z<sup>2</sup>
+  </h1>
+</body>						
+</html>						
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+				<section class="subsection color--radiant">
+				</section>
+
+        <section id="paragraph">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">段落基础知识</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">HTML文件在输出时都是要重新排版的，即把文本上一些额外的字符（包括空格、制表符和回车符等）都忽略</p>
+              <p class="fragment">不能使用回车来换行，段落标记可以实现换行，其语法格式如下：</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+                  <p align="对齐方式"> 段落内容 </p>
+                </script>
+              </code></pre>
+              <p class="fragment">&lt;br /&gt;标记的作用就是换行，不能设置任何属性。</p>
+              <p class="fragment">一次换行使用一次&lt;br /&gt;，多次换行需要使用多次&lt;br /&gt;，连续使用两次&lt;br /&gt;等效于一个段落换行标记&lt;p /&gt;</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="paragraph-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：段落和换行的使用</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/paragraph-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <pre><code class="lang-html" style="max-height: 700px;" data-line-numbers="">
+                <script type="text/template">
+<!DOCTYPE html>     		
+<html> 						
+<head> 						
+  <meta charset="UTF-8">	
+  <title>换行标记的使用</title>
+</head>						
+<body>						
+  <font size="5" color="blue" face="黑体">
+     《登鹳雀楼》<p />白日依山尽，<p />黄河入海流。<p />
+     欲穷千里目，<p />更上一层楼。
+     <hr />
+     《登鹳雀楼》<br />白日依山尽，<br />黄河入海流。
+     <br />欲穷千里目，<br />更上一层楼。
+     <hr />
+     <p>《登鹳雀楼》</p>
+     <p>白日依山尽，</p>
+     <p>黄河入海流。</p>
+     <p>欲穷千里目，</p>
+     <p>更上一层楼。</p>
+  </font>
+</body>						
+</html>						
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="pre">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">预格式化基础知识</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">预格式化指的是某些格式可以在源代码中预先设置</p>
+              <p class="fragment">源代码执行后的效果与源代码中预先设置好的效果几乎完全一样。</p>
+              <p class="fragment">预格式化标记的语法如下：</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+                  <pre>…</pre>
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="pre-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：预格式化的使用</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/pre-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content" full-height>
+              <pre><code class="lang-html" style="max-height: 700px;" data-line-numbers="">
+                <script type="text/template">
+<!DOCTYPE html>     		
+<html> 						
+<head> 						
+  <meta charset="UTF-8">	
+  <title>预格式化标记的使用</title>
+</head>						
+<body>						
+  <font size="6" color="blue" face="黑体">
+    <pre>
+    《登鹳雀楼》
+     
+     白日依山尽
+     黄河入海流
+     欲穷千里目
+     更上一层楼。
+    </pre> 
+  </font>
+</body>						
+</html>						
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="escape-sequence">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">转义字符基础知识</h1>
+            </div>
+            <div class="content">
+              <div class="r-stack">
+                <div class="full-width">
+                  <p class="fragment">
+                    转义字符由三部分组成：
+                  </p>
+                  <ul>
+                    <li class="fragment">第一部分是“&amp;”符号；</li>
+                    <li class="fragment">第二部分是实体名字或者是“#”加上实体编号；</li>
+                    <li class="fragment">第三部分是分号，表示转义字符结束。</li>
+                  </ul>
+                </div>
+                <div class="r-stack fragment">
+                  <img class="animated slideInLeft" src="img/chapter001/escape-sequence.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="escape-sequence-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用转义字符</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/escape-sequence-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content">
+              <pre><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+<!DOCTYPE html>     		
+<html> 						
+<head> 						
+  <meta charset="UTF-8">	
+  <title>特殊标记的使用</title>
+</head>						
+<body>						
+  在HTML中，常用的特殊字符有：<br/>
+&lt;、&gt;、&amp;、&quot;、&copy;、&reg;、
+&trade;、&times;、&divide;等。
+</body>						
+</html>						
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="unordered-list">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">无序列表</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                无序列表主要使用&lt;ul&gt;、&lt;li&gt;标记和type属性
+              </p>
+              <p class="fragment">&lt;ul&gt;标记表示定义无序列表</p>
+              <p class="fragment">&lt;li&gt;标记定义列表项</p>
+              <p class="fragment">type属性表示列表项的显示模式，其的取值定义如下：</p>
+              <ul>
+                <li class="fragment">　　disc是默认值，为实心圆；</li>
+                <li class="fragment">　　circle为空心圆；</li>
+                <li class="fragment">　　square为实心方块；</li>
+              </ul>
+              <p class="fragment">
+                无序列表的基本语法如下：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              <ul  type="列表项的标记符">
+              <li>项目一 </li>
+              <li>项目二 </li>
+              <li>项目三 </li>
+              …… 
+              </ul> 
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="ordered-list">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">有序列表</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">列表中的项目采用数字或英文字母开头，通常各项目间有先后的顺序性。</p>
+              <p class="fragment">在有序列表中，主要使用&lt;ol&gt;和&lt;li&gt;两个标记以及type和start属性。</p>
+              <p class="fragment">有序列表的基本语法如下：</p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              <ol  type="列表项的标记符 "  start="起始值 ">
+              　<li>项目一 </li>
+              　<li>项目二 </li>
+              　<li>项目三 </li>
+              　…… 
+              </ol> 
+                </script>
+              </code></pre>
+              <p class="fragment">start属性定义列表项开始编号的位置序号。</p>
+              <p class="fragment">type属性将有序列表的类型设置为英文或罗马字母</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="list-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：列表的使用</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/list-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <div class="code-tips" style="display:none;">
+                <p class="code-tip" data-code-line-numbers="9-13">无序列表示例1</p>
+                <p class="code-tip" data-code-line-numbers="15-19">无序列表示例2</p>
+                <p class="code-tip" data-code-line-numbers="21-25">有序列表示例1</p>
+                <p class="code-tip" data-code-line-numbers="27-31">有序列表示例2</p>
+                <p class="code-tip" data-code-line-numbers="33-42">嵌套列表示例</p>
+              </div>
+              <pre><code class="lang-html" style="max-height: 630px;" 
+                data-line-numbers="0|9-13|15-19|21-25|27-31|33-42">
+                <script type="text/template">
+<!DOCTYPE html>     		
+<html> 						
+<head> 						
+  <meta charset="UTF-8">	
+  <title>列表标记</title>
+</head>						
+<body>						
+  Web前端语言：<br/>
+  <ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ul>
+  Web服务器端语言：<br/>
+  <ul type="circle">
+    <li>ASP.NET</li>
+    <li>PHP</li>
+    <li>JSP</li>
+  </ul>
+  <hr>
+  Web前端语言：<br/>
+  <ol>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ol>
+  Web服务器端语言：<br/>
+  <ol type="I" start="2">
+    <li>ASP.NET</li>
+    <li>PHP</li>
+    <li>JSP</li>
+  </ol>
+  <hr>
+  <h3>列表嵌套</h3>
+  <ul type="square">
+    <li>树叶</li>
+    <li>树
+      <ol>
+        <li>枫树</li>
+        <li>杨树</li>
+      </ol>
+    </li>
+    <li>还有什么</li>
+  </ul>
+</body>						
+</html>						
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="hyperlink">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">超链接</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">超链接可以实现页面之间的跳转</p>
+              <p class="fragment">默认情况下，超链接在网页中以蓝色带下划线的文字表示</p>
+              <p class="fragment">超链接以&lt;a&gt;标记表示</p>
+              <p class="fragment">当用户单击文本链接指针时，即可在浏览器窗口打开链接的主页内容</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="hyperlink-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：超链接的使用</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/hyperlink-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <pre><code class="lang-html" style="max-height: 700px;" data-line-numbers="">
+                <script type="text/template">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>文本链接</title>
+</head>
+<body>
+   常用的购物网站有：
+    <ul>
+     <li><a href="http://www.taobao.com/">淘宝</a></li>
+     <li><a href="http://www.jd.com" target="_blank">京东</a></li>
+     <li><a href="http://www.suning.com" target="_top">苏宁</a></li>
+    </ul>
+    链接到其他页面：
+    <a href="hyperlink-example2.html">页面2</a>
+    <a href="hyperlink-example2.html" target="_blank">页面2</a>
+</body>
+</hmtl>
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="bookmark-link">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">书签链接</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                书签链接可用于当前页面的书签位置跳转，也可跳转到不同页面的书签位置。
+              </p>
+              <p class="fragment">
+                创建书签链接需要两步：
+              </p>
+              <ul>
+                <li class="fragment">第一步：创建书签，</li>
+                <li class="fragment">第二步：是创建书签链接。</li>
+              </ul>
+              <p class="fragment">
+                创建书签语法结构如下：　　
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+                <a name="书签名">[文字或图片]</a>
+                </script>
+              </code></pre>
+              <p class="fragment">
+                链接到同一页面的书签连接定义语法如下：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              <a href="#书签名">源端点</a>
+                </script>
+              </code></pre>
+              <p class="fragment">
+                链接到不同网页页面的书签连接定义语法如下：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              <a href="file_URL#书签名">源端点</a>
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="bookmark-link-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：书签链接的使用</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/bookmark-link-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <pre><code class="lang-html" style="max-height: 700px;" data-line-numbers="">
+                <script type="text/template">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>书签链接</title>
+</head>
+<body>
+   书中目录：
+    <ul>
+      <li>
+        <a href="bookmark-link-example2.html#top4">第4章</a>
+      </li>
+      <li>
+        <a href="bookmark-link-example2.html#top11">第11章</a>
+      </li>
+    </ul>
+</body>
+</hmtl>
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="image">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">图片标记</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                图片标记语法格式如下：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              <img src="" alt=""  height="" width="" />
+                </script>
+              </code></pre>
+              <p class="fragment">src属性表示图片文件的路径</p>
+              <p class="fragment">alt属性表示提示文本，当图片无法显示时会显示该文本替代</p>
+              <p class="fragment">height属性表示图片的高度</p>
+              <p class="fragment">width属性表示图片的宽度</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="image-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用图片</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/image-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <pre><code class="lang-html" style="max-height: 700px;" data-line-numbers="">
+                <script type="text/template">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>图片使用</title>
+</head>
+<body>
+  <img src="img/football.jpg" alt="图片默认的高度与宽度">
+  <a href="http://www.whpu1.edu.cn">
+    <img src="img/building.jpg" width="250" 
+      height="150" border="3">
+  </a>
+</body>
+</hmtl>
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="subsection color--radiant">
+        </section>
+
+        <section id="table">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">表格基础知识</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                表格的基本语法结构如下所示：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              <table  width="  " border=" ">
+                <tr>
+                    <td>单元格内容</td>
+                  ......
+                </tr>
+              </table>
+                </script>
+              </code></pre>
+              <p class="fragment">width属性设置的是表格的宽度</p>
+              <p class="fragment">border属性设置的是表格的边框线</p>
+              <p class="fragment">从结构上来看，表格可以分成表头、主体和表尾三个部分，分别使用<thead>、<tbody>、<tfoot>标签来表示。</p>
+              <p class="fragment">表头和表尾在一张表格只能有一个，而一张表格可以有多个主体。</p>
+              <p class="fragment">
+                &lt;thead&gt;、&lt;tbody&gt;、&lt;tfoot&gt;标签内部都必须使用&lt;tr&gt;标签。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="table-properties">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">表格的属性</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                表格有大量的属性，可以控制表格的各种特性：
+              </p>
+              <ul>
+                <li class="fragment">通过border属性设定表格边框线宽度；</li>
+                <li class="fragment">通过bordercolor属性设定表格边框线的颜色；</li>
+                <li class="fragment">通过width属性设定表格宽度；</li>
+                <li class="fragment">通过height属性设定表格高度；</li>
+                <li class="fragment">通过cellspacing属性设定单元格之间的间距；</li>
+                <li class="fragment">通过cellpadding属性设定单元格的内容与其边框的内边距的间距；</li>
+                <li class="fragment">通过align属性设定表格的对齐方式；</li>
+                <li class="fragment">通过background属性设定表格的背景图片文件；</li>
+                <li class="fragment">通过bgcolor属性设定表格的背景颜色。</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="table-properties-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：设置表格的属性</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/table-properties-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <pre><code class="lang-html" style="max-height: 700px;" data-line-numbers="">
+                <script type="text/template">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>表格的属性</title>
+</head>
+<body>
+<table border="2" width="400px" height="60px" 
+cellspacing="1" cellpadding="2" align="center" 
+bgcolor="pink" background="2-3.jpg" 
+bordercolor="red">
+  <caption>表格标题</caption>
+  <tr>
+    <th>学号</th>
+    <th>姓名</th>
+    <th>专业</th>
+  </tr>
+  <tr>
+    <td>8888</td>
+    <td>张三</td>
+    <td>网络工程</td>
+  </tr>
+</table>
+</body>
+</html>
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- table-properties-example -->
+
+        <section id="table-row-properties">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">表格的行属性</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                表格的行也有大量的属性可以设置，其语法如下：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              <tr height="" a1ign="" va1ign=""  bgco1or="">
+                </script>
+              </code></pre>
+              <ul>
+                <li class="fragment">通过align属性设定表格水平方向对齐；</li>
+                <li class="fragment">通过height属性设定表格高度；</li>
+                <li class="fragment">通过valign属性设定该行的垂直方向对齐；</li>
+                <li class="fragment">通过bgcolor属性设定该行的背景颜色。</li>
+              </ul>
+            </div>
+          </div>
+        </section> <!-- table-row-properties -->
+
+        <section id="table-row-properties-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：表格行属性的使用</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/table-row-properties-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <pre><code class="lang-html" style="max-height: 700px;" data-line-numbers="">
+                <script type="text/template">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>表格的行属性</title>
+</head>
+<body>
+<table border="2" width="400px" >
+  <caption>学生信息</caption>
+  <tr>
+    <td>学号</td>
+    <td>姓名</td>
+    <td>专业</td>
+  </tr>
+  <tr align="center" valign="middle" height="100px"  
+    bgcolor="yellow" >
+    <td>8888</td>
+    <td>张三</td>
+    <td>网络工程</td>
+  </tr>
+</table>
+</body>
+</html>
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- table-row-properties-example -->
+
+        <section id="merge-cell">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">合并单元格（跨行和跨列）</h1>
+              <!-- <p style="text-align: center;"> -->
+              <!-- </p> -->
+            </div>
+            <div class="content">
+              <p class="fragment">
+                跨行和跨列功能可分别通过单元格的rowspan和colspan属性来实现，语法如下：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              <td rowspan="所跨行数" colspan="所跨列数">
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- merge-cell -->
+
+        <section id="merge-cell-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：合并单元格</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/merge-cell-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <div class="code-tips" style="display:none;">
+                <p class="code-tip" data-code-line-numbers="15-17">单元格跨两行</p>
+                <p class="code-tip" data-code-line-numbers="21-23">单元格跨3列</p>
+                <p class="code-tip" data-code-line-numbers="27">单元格跨4列</p>
+              </div>
+              <pre><code class="lang-html" style="max-height: 700px;" 
+              data-line-numbers="0|15-17|21-23|27">
+                <script type="text/template">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>合并单元格</title>
+</head>
+<body>
+<table border="2" width="400px" >
+	<caption>大奖赛登记表</caption>
+      <tr>
+        <td>报名号</td>
+        <td>00757</td>
+        <td>性别</td>
+        <td>女</td>
+        <td rowspan="2">
+          <img src="img/photo.jpg" alt="登记照" height="200px">
+        </td>
+      </tr>
+      <tr>
+        <td>姓名</td>
+        <td colspan="3">
+          <a href="#">李四</a>
+        </td>
+      </tr>
+      <tr>
+        <td>推荐单位</td>
+        <td colspan="4">四川师范大学</td>
+      </tr>
+</table>
+</body>
+</html>
+                </script>
+              </code></pre>          
+            </div>
+          </div>
+        </section> <!-- merge-cell-example -->
+
+				<section class="subsection color--radiant">
+				</section>
+
+        <section id="textbox">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">表单元素：输入框</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                input标记定义的语法格式如下所示：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              <input  type="..."  name="..."  value="...">
+                </script>
+              </code></pre>
+              <p class="fragment">
+                输入框是最基本的表单元素，主要分文文本框和密码框
+              </p>
+              <p class="fragment">
+                他们的差别主要在于type属性不同，此外，密码框输入时，不回显用户的输入值
+              </p>
+              <ul>
+                <li class="fragment">文字输入
+                  <pre><code class="lang-html" data-line-numbers="">
+                    <script type="text/template">
+                  <input  type="text"  name="..."  value="...">
+                    </script>
+                  </code></pre>
+                </li>
+                <li class="fragment">
+                  密码输入
+                  <pre><code class="lang-html" data-line-numbers="">
+                    <script type="text/template">
+                  <input  type="password"  name="..."  value="...">
+                    </script>
+                  </code></pre>
+                </li>
+              </ul>
+              <p class="fragment">
+                如果需要限制用户输入数据的最大长度时，在input标记中使用最大长度的属性maxlength。
+              </p>
+              <p class="fragment">value属性可以设置默认值</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="textbox-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用文本框和密码框</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/textbox-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <pre><code class="lang-html" style="max-height: 700px;" data-line-numbers="">
+                <script type="text/template">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>表单</title>
+</head>
+<body>
+<form action="reg.asp" method="post">
+  请输入您的真实姓名: 
+  <input type="text" name="userName"><br>
+  您的主页的网址: 
+  <input type="text" name="webAddress" value=http://><br>
+  密码: 
+  <input type="password" name="password"><br>
+  <input type="submit" value="提交">
+  <input type="reset" value="复位">
+</form>
+</body>
+</html>
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="radio-and-checkbox">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">单选框和复选框</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                单选框和复选框一般用来让用户作出选择，相同组的单选框只能选中一项，而复选框可以选多项。
+              </p>
+              <p class="fragment">
+                他们的区别也在于type属性不同
+              </p>
+              <ul>
+                <li class="fragment">复选框: 
+                  <pre><code class="lang-html" data-line-numbers="">
+                    <script type="text/template">
+                  <input  type="checkbox"  name="..."  value="...">
+                    </script>
+                  </code></pre>
+                </li>
+                <li class="fragment">单选框: 
+                  <pre><code class="lang-html" data-line-numbers="">
+                    <script type="text/template">
+                  <input  type="radio"  name="..."  value="...">
+                    </script>
+                  </code></pre>
+                </li>
+              </ul>
+              <p class="fragment">
+                “checked”属性表示在初始情况下该单选框或复选框是否被选中
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="radio-and-checkbox-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：使用单选框和复选框</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/radio-and-checkbox-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content" full-height>
+              <div class="code-tips" style="display:none;">
+              <p class="code-tip" data-code-line-numbers="11-13">单选框，name属性相同为一组，一组当中只能同时选中一项</p>
+                <p class="code-tip" data-code-line-numbers="15-17">复选框，name属性相同为一组，一组当中可以同时选中多项</p>
+              </div>
+              <pre><code class="lang-html" style="max-height: 700px;" 
+              data-line-numbers="0|11-13|15-17">
+                <script type="text/template">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>表单</title>
+</head>
+
+<body>
+<form action="reg.asp" method="post">
+  选择一种你喜爱的水果:
+  <br><input type="radio" name="sg" vale="banana">香蕉
+  <br><input type="radio" name="sg" vale="apple">苹果
+  <br><input type="radio" name="sg" vale="orange">橘子
+  <br>选择你所喜爱的运动:
+  <br><input type="checkbox"  name="ra1" value="football">足球
+  <br><input type="checkbox"  name="ra2" checked value="basketball">篮球
+  <br><input type="checkbox"  name="ra3" value="volleyball">排球
+  <br><input type="submit" vale="发送">
+      <input type="reset" vale="重新输入">
+  <input type="submit" value="提交">
+  <input type="reset" value="复位" >
+</form>
+</body>
+</html>
+                </script>
+              </code></pre>             
+            </div>
+          </div>
+        </section> <!-- radio-and-checkbox-example -->
+
+        <section id="dropdown">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">下拉列表框</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                下拉列表框也是让用户作出选择的表单元素，一般通过select和option标记表示
+              </p>
+              <p class="fragment">
+                select标记的语法格式如下所示：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+                <select name="" size="" multiple>
+                  <option value="选项1">选项1
+                  ...
+                  <option value="选项n">选项n
+                </select>
+                </script>
+              </code></pre>
+              <p class="fragment">
+                select 标记中有几个常用的属性，分别是 name、size、multiple。
+              </p>
+              <p class="fragment">
+                option标记中如果有selected属性表示默认选中的选项。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="dropdown-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：下拉列表框</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/dropdown-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <div class="code-tips" style="display:none;">
+                <p class="code-tip" data-code-line-numbers="9-18">下拉列表框，共有8个选项</p>
+                <p class="code-tip" data-code-line-numbers="12">默认选中此选项</p>
+              </div>
+              <pre><code class="lang-html" style="max-height: 700px;" 
+              data-line-numbers="0|9-18|12">
+                <script type="text/template">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>select标记</title>
+</head>
+<body>
+  出生年：
+  <select name="birthYear" >
+    <option value="1998">1998
+    <option value="1999">1998
+    <option value="2000" selected>2000
+    <option value="2001">2001
+    <option value="2002">2002
+    <option value="2003">2003
+    <option value="2004">2004
+    <option value="2005">2005
+  </select>
+</body>
+</html>
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- dropdown-example -->
+
+        <section id="textarea">
+          <div class="grid-wrapper three">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">多行文本框</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                在表单中，如果需要输入大量的文字时，特别是包括换行文字时，需要使用&lt;textarea&gt;多行文本框标记。
+              </p>
+              <p class="fragment">
+                在HTML中，&lt;textarea&gt;标记的语法格式如下：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+              <textarea name="…" cols="…" rows="…" wrap="off/virtual/physical">
+              </textarea>
+                </script>
+              </code></pre>
+              <p class="fragment">
+                当用户在输入文本区域中输入文本时，只有用户按下 Enter 键时才产生换行。如果希望启动自动换行功能（word wrapping），需要将 wrap 属性设置为 virtual 或 physical。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="textarea-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：多行文本框</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/textbox-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <pre><code class="lang-html" style="max-height: 600px;" data-line-numbers="">
+                <script type="text/template">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>textarea标记</title>
+</head>
+<body>
+ 备注：<br />
+ <textarea wrap="physical" name="bz" 
+   clos="60" rows="4">
+ </textarea>
+</body>
+</html>
+                </script>
+              </code></pre>             
+            </div>
+          </div>
+        </section> <!-- textarea-example -->
+
+        <section id="suggestion">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">建议列表</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">如果需要用户自由输入的同时又给用户一些建议选项，这就需要使用<datalist>元素。</p>
+              <p class="fragment">datalist元素用于定义输入框的选项列表，列表通过 datalist内的option元素进行创建。</p>
+              <p class="fragment">如果用户不希望从列表中选择某项，也可以自行输入其他内容。datalist元素通常与input元素联合使用来定义input的取值。</p>
+              <p class="fragment">在使用&lt;datalist&gt;标记时，需要通过id属性为其指定一个唯一标识，然后为input元素指定list属性，将该属性值设置为option元素对应的id属性值即可。</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="suggestion-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：建议列表</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/suggestion-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <div class="code-tips" style="display:none;">
+                <p class="code-tip" data-code-line-numbers="10">在文档框中指定建议列表</p>
+                <p class="code-tip" data-code-line-numbers="11-27">在建议列表中指定数据</p>
+              </div>
+              <pre><code class="lang-html" style="max-height: 700px;" 
+                data-line-numbers="0|10|11-27">
+                <script type="text/template">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>datalist标记</title>
+</head>
+
+<body>
+ <label>请选择合适的编辑器:</label> 
+    <input type="text" id="txt_ide" list="ide" /> 
+    <datalist id="ide"> 
+        <option value="Brackets" /> 
+        <option value="Coda" /> 
+        <option value="Dreamweaver" /> 
+        <option value="Espresso" /> 
+        <option value="jEdit" /> 
+        <option value="Komodo Edit" /> 
+        <option value="Notepad++" /> 
+        <option value="Sublime Text 2" /> 
+        <option value="Taco HTML Edit" /> 
+        <option value="Textmate" /> 
+        <option value="Text Pad" /> 
+        <option value="TextWrangler" /> 
+        <option value="Visual Studio" /> 
+        <option value="VIM" /> 
+        <option value="XCode" /> 
+    </datalist>
+</body>
+</html>
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- suggestion-example -->
+
+        <section id="form">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">表单主标记</h1>
+            </div>
+            <div class="content">
+              <p class="fragment">
+                表单主标记把各种表单元素组织成一个整体， 其语法如下：
+              </p>
+              <pre class="fragment"><code class="lang-html" data-line-numbers="">
+                <script type="text/template">
+                <form action="" method="" enctype=""></form>
+                </script>
+              </code></pre>
+              <p class="fragment">其中action属性表示表单提交后的地址</p>
+              <p class="fragment">method属性表示提交方式，可选post和put</p>
+              <p class="fragment">enctype表示表单的编码，默认编码值为application/x-www-form-urlencoded，</p>
+              <p class="fragment">表单中有文件元素时编码应设置为multipart/form-data</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="form-example">
+          <div class="grid-wrapper">
+            <div class="header">
+              <div class="logo"></div>
+              <h1 class="header">示例：表单的综合运用</h1>
+              <h1 class="right">
+                <a href="demo/chapter001/form-example.html" target="_blank" rel="noopener noreferrer">预览</a>
+              </h1>
+            </div>
+            <div class="content full-height">
+              <div class="code-tips" style="display:none;">
+                <p class="code-tip" data-code-line-numbers="13">使用文本框输入年龄</p>
+                <p class="code-tip" data-code-line-numbers="18-20">使用单选按钮域定义性别输入框</p>
+                <p class="code-tip" data-code-line-numbers="26-33">使用下拉列表域定义学历输入框</p>
+                <p class="code-tip" data-code-line-numbers="39-42">使用复选框按钮域定义选修课程输入框</p>
+                <p class="code-tip" data-code-line-numbers="47">使用多行输入框定义自我评价输入框</p>
+                <p class="code-tip" data-code-line-numbers="51-52">定义提交和重置两个按钮</p>
+              </div>
+              <pre><code class="lang-html" style="max-height: 700px;" 
+              data-line-numbers="0|13|18-20|26-33|39-42|47|51-52">
+                <script type="text/template">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>表单综合实例</title>
+</head>
+<body>
+<table align="center" width="500" border="0" cellpadding="2" cellspacing="0">  
+  <caption align="center"><h2>学生注册信息</h2></caption>  
+  <form action="server.php" method="post">  
+  <tr> 
+    <th>姓名：</th>  
+    <td ><input type="text" name="username" size="20" /></td>  
+  </tr>  
+  <tr>
+     <th>性别：</th>  
+     <td>  
+       <input type="radio" name="sex" value="1" checked="checked" />男  
+       <input type="radio" name="sex" value="2" />女  
+       <input type="radio" name="sex" value="3" />保密  
+     </td>  
+  </tr>  
+  <tr>
+     <th>学历：</th>  
+     <td>  
+       <select name="edu">  
+         <option>--请选择--</option>  
+         <option value="1">高中</option>  
+         <option value="2">大专</option>  
+         <option value="3">本科</option>  
+         <option value="4">研究生</option>  
+         <option value="5">其他</option>  
+       </select>  
+      </td>  
+   </tr>  
+   <tr>
+     <th>选修课程：</th>  
+     <td>  
+       <input type="checkbox" name="course[]" value="4">Linux  
+       <input type="checkbox" name="course[]" value="5">Apache  
+       <input type="checkbox" name="course[]" value="6">Mysql  
+       <input type="checkbox" name="course[]" value="7">PHP  
+     </td>  
+   </tr>  
+   <tr>
+     <th>自我评价：</th>  
+     <td><textarea name="eval" rows="4" cols="40"></textarea></td>  
+   </tr>  
+   <tr>
+     <td colspan="2" align="center">  
+       <input type="submit" name="submit" value="提交">  
+       <input type="reset" name="reset" value="重置">  
+     </td>  
+   </tr> 
+  </form>  
+</table>  
+</body>
+</html>
+                </script>
+              </code></pre>
+            </div>
+          </div>
+        </section> <!-- form-example -->
+
+        <section id="thank-you-slide" class="end color--radiant">
+        </section>
+
+      </div> <!-- slides -->
+    </div> <!-- reveal -->
+
+		<script>
+      language = 'cn';
+
+      var myConfig = {
+        "math": math, 
+        "asciinema": {
+          rows: 24,
+          cols: 81
+        }
+      };
+
+      defineMyPlugins = function() {
+        myPreloadPlugins = [
+          /**** my plugins ****/
+          RevealLoadCode, RevealFragmentOrder,
+        ];
+        myPlugins = [
+          /**** built-in plugins ****/
+          /**** third-party plugins ****/
+          /**** my plugins ****/
+          RevealCodeTips, RevealFragmentGroup,
+        ];
+      }
+		</script>
+    <script src="js/common.js"></script>
+
+	</body>
+</html>

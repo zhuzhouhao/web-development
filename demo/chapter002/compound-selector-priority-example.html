@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>样式优先级</title>
+<style>
+  /** RainSia::tip {{{优先级为：0,1,1}}} RainSia::end **/
+    h2.special { color: red; }
+  /** RainSia::tip {{{优先级为：0,1,1}}} RainSia::end **/
+    h2[id]{ color: green; }
+  /** RainSia::tip {{{优先级为：0,2,1}}} RainSia::end **/
+    h2.special.very { color: red; }
+  /** RainSia::tip {{{优先级为：0,1,1}}} RainSia::end **/
+    h2[text=olay] { color: green; }
+</style>
+</head>
+<body>
+  <h2 class="special" id="title">究竟哪个样式优先呢？</h2>
+  <h2 class="special very" text="olay">究竟哪个样式优先呢？</h2>
+</body>
+</html>

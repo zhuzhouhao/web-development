@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-show指令</title>
+</head>
+<body>
+  <div id="app">
+    <button @click="toggle">切换</button>
+    <h2 v-show="isShown">显示还是不显示，这是个问题</h2>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        isShown: true
+      },
+      methods : {
+        toggle() {
+          this.isShown = !this.isShown;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

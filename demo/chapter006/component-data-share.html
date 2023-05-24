@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件</title>
+</head>
+<body>
+    <div id="app">
+      <my-cpn></my-cpn>
+      <my-cpn></my-cpn>
+      <my-cpn></my-cpn>
+      <my-cpn></my-cpn>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+      const obj = {
+        counter: 0
+      };
+      const myCpn = Vue.extend({
+        data() {
+          return obj;
+        },
+        template: `
+          <div>
+            <span>当前计数器：{{counter}}</span>
+            <button @click=inc>增加</button>
+          </div>`,
+        methods: {
+          inc() {
+            this.counter++;
+          }
+        }
+      });
+
+      Vue.component('my-cpn', myCpn);
+
+      let app1 = new Vue({
+        el: '#app'
+      });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用Bind绑定this对象</title>
+</head>
+<body>
+  <script>
+    var obj1 = {
+      x: 42,
+      getX: function() {
+        return this.x;
+      }
+    };
+    var unboundGetX = obj1.getX;
+    document.write(unboundGetX(), "<br>");
+
+    var boundGetX = unboundGetX.bind(obj1);
+    document.write(boundGetX(), "<br>");
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用简单对象</title>
+</head>
+<body>
+  <script>
+    var obj1 = {name: "李四", age: 22};
+    document.write(obj1);
+    console.log(obj1);
+
+    var obj2 = new Object();
+    obj2.name = "张三";
+    obj2.age = 18;
+    obj2.showInfo = function() {
+      document.write(this.name, " ", this.age);
+    }
+    obj2.showInfo();
+    console.log(obj2);
+  </script>
+</body>
+</html>

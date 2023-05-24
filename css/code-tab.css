@@ -1,0 +1,19 @@
+.tab-content-1,
+.tab-content-2,
+.tab-content-3,
+.tab-content-4,
+.tab-content-5{
+  display: none;
+}
+
+.tab-container>input[type=radio]~span {
+  font-size: 28px;
+}
+
+.tab-container>.tab-1:checked~.tab-content-1,
+.tab-container>.tab-2:checked~.tab-content-2,
+.tab-container>.tab-3:checked~.tab-content-3,
+.tab-container>.tab-4:checked~.tab-content-4,
+.tab-container>.tab-5:checked~.tab-content-5{
+  display: block;
+}
